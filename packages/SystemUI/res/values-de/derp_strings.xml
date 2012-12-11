@@ -69,4 +69,9 @@
     <!-- Label for current user in power menu options dialog -->
     <string name="global_action_current_user">Aktuell</string>
     <string name="global_action_users">Benutzer</string>
+
+    <!-- Navigation bar dpad -->
+    <string name="accessibility_dpad_left">Cursor links</string>
+    <string name="accessibility_dpad_right">Cursor rechts</string>
+
 </resources>
