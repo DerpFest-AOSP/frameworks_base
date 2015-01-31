@@ -18,4 +18,9 @@
     <string name="quick_settings_heads_up_label">Pop-up</string>
     <string name="accessibility_quick_settings_heads_up_off">Pop-up aus.</string>
     <string name="accessibility_quick_settings_heads_up_on">Pop-up an.</string>
+
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">Synchronisation</string>
+    <string name="accessibility_quick_settings_sync_off">Synchronisierung aus.</string>
+    <string name="accessibility_quick_settings_sync_on">Synchronisierung an.</string>
 </resources>
