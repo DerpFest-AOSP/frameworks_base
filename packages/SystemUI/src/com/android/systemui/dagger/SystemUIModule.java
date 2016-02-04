@@ -47,6 +47,7 @@ import com.android.systemui.controls.dagger.ControlsModule;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dagger.qualifiers.SystemUser;
 import com.android.systemui.demomode.dagger.DemoModeModule;
+import com.android.systemui.derp.DerpFestModule;
 import com.android.systemui.display.DisplayModule;
 import com.android.systemui.doze.dagger.DozeComponent;
 import com.android.systemui.dreams.dagger.DreamModule;
@@ -172,6 +173,7 @@ import javax.inject.Named;
             DreamModule.class,
             ControlsModule.class,
             DemoModeModule.class,
+            DerpFestModule.class,
             DisableFlagsModule.class,
             FalsingModule.class,
             FlagsModule.class,
