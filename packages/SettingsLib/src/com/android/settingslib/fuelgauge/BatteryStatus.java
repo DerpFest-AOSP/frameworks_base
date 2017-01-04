@@ -79,7 +79,6 @@ public class BatteryStatus {
         this.oemFastCharging = oemFastCharging;
     }
 
-
     public BatteryStatus(Intent batteryChangedIntent) {
         this(batteryChangedIntent, Optional.empty());
     }
