@@ -12447,6 +12447,18 @@ public final class Settings {
         public static final String QQS_NUM_COLUMNS_LANDSCAPE = "qqs_num_columns_landscape";
 
         /**
+         * Whether or not to hide the network traffic indicator
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_MODE = "network_traffic_mode";
+
+        /**
+         * Whether or not to hide the network traffic indicator when there is no activity
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
