@@ -6844,6 +6844,11 @@ public final class Settings {
         public static final String DOZE_TRIGGER_DOUBLETAP = "doze_trigger_doubletap";
 
         /**
+         * @hide
+         */
+        public static final String LOCK_HIDE_STATUS_BAR = "lockscreen_hide_status_bar";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -7021,6 +7026,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(SENSOR_BLOCK);
             PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
+            PRIVATE_SETTINGS.add(LOCK_HIDE_STATUS_BAR);
         }
 
         /**
