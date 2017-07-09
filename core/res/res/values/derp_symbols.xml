@@ -151,4 +151,7 @@
 
     <!-- Location indicator -->
     <java-symbol type="drawable" name="stat_sys_location" />
+
+    <!-- Sensor block -->
+    <java-symbol type="array" name="config_blockPackagesSensorDrain" />
 </resources>
