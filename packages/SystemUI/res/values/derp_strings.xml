@@ -104,6 +104,9 @@
     <!-- Name of the nfc status bar icon. -->
     <string name="status_bar_nfc">NFC</string>
 
+    <!-- Name of the volte/vowifi status bar icon. -->
+    <string name="status_bar_ims">VoLTE/VoWiFi</string>
+
     <!-- Status bar network traffic monitor strings -->
     <string name="kilobitspersecond_short" translatable="false">kb/s</string>
     <string name="megabitspersecond_short" translatable="false">Mb/s</string>
