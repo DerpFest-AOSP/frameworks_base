@@ -384,6 +384,8 @@ public interface CentralSurfaces extends Dumpable, LifecycleOwner {
 
     GameSpaceManager getGameSpaceManager();
 
+    void toggleCameraFlash();
+
     public static class KeyboardShortcutsMessage {
         final int mDeviceId;
 
