@@ -200,6 +200,7 @@ android_library {
         "bcsmartspace-google",
     ],
     manifest: "AndroidManifest.xml",
+    additional_manifests: ["DerpFestManifest.xml"],
 
     javacflags: ["-Adagger.fastInit=enabled"],
     kotlincflags: ["-Xjvm-default=enable"],
