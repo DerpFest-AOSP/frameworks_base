@@ -49,4 +49,17 @@
 
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
     <string name="screenshot_delete_description">Screenshot löschen</string>
+
+    <!-- Advanced restart menu -->
+    <string name="global_action_restart_more">Neustarten\u2026</string>
+    <string name="global_action_restart_system">System</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Download-Modus</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Neustarten\u2026</string>
+    <string name="global_action_restart_recovery_progress">In Recovery-Modus neustarten\u2026</string>
+    <string name="global_action_restart_bootloader_progress">In Bootloader-Modus neustarten\u2026</string>
+    <string name="global_action_restart_download_progress">In Download-Modus neustarten\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Neustart in den Fastbootd-Modus\u2026</string>
 </resources>
