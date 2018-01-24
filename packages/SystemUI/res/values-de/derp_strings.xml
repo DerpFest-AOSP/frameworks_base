@@ -234,4 +234,28 @@
     <!-- Navbar -->
     <string name="systemui_tuner_navbar_title">Layout</string>
     <string name="navigation_bar_format_title">Navigationsleistenformat</string>
+    <string name="preview">Vorschau</string>
+    <string name="keycode">Taste</string>
+    <string name="no_home_title">Kein Home-Button gefunden</string>
+    <string name="no_home_message">Ein Home-Button ist nötig, um dieses Gerät navigieren zu können. Bitte fügen Sie einen Home-Button hinzu.</string>
+    <string name="clipboard_description">Die Zwischenablage erlaubt es, Dinge direkt in die Zwischenablage zu ziehen. Dinge können auch herausgezogen werden, wenn vorhanden.</string>
+    <string name="keycode_description">Tastenknöpfe erlauben es, Tastaturtasten zur Navigationsleiste hinzuzufügen. Wenn gedrückt, emulieren sie den gewählten Tastaturknopf. Zuerst muss eine Taste ausgewählt werden, worauf ein Bild für den Button folgt.</string>
+    <string name="start">Start</string>
+    <string name="center">Mitte</string>
+    <string name="end">Ende</string>
+    <string name="space">Platzhalter</string>
+    <string name="menu_ime">Menü / IME-Umschalter</string>
+    <string name="select_button">Wähle Button zum hinzufügen aus</string>
+    <string name="add_button">Button hinzufügen</string>
+    <string name="save">Speichern</string>
+    <string name="select_keycode">Tastaturtaste auswählen</string>
+    <string name="left">Links</string>
+    <string name="right">Rechts</string>
+    <string name="navbar_editor_power">Ein/Aus</string>
+    <string name="navbar_editor_volup">Lauter</string>
+    <string name="navbar_editor_voldown">Leiser</string>
+    <string name="navbar_editor_title">Bearbeiten</string>
+    <string name="navbar_editor_summary">Navigationsleiste bearbeiten</string>
+    <!-- SysUI Tuner: Adjust button width dialog title [CHAR LIMIT=60] -->
+    <string name="adjust_button_width">Buttonbreite anpassen</string>
 </resources>
