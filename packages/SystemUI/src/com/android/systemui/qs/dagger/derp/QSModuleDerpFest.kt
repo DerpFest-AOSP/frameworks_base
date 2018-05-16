@@ -37,6 +37,7 @@ import com.android.systemui.qs.tiles.RefreshRateTile
 import com.android.systemui.qs.tiles.DerpSpaceTile
 import com.android.systemui.qs.tiles.PreferredNetworkTile
 import com.android.systemui.qs.tiles.LocaleTile
+import com.android.systemui.qs.tiles.ReadingModeTile
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -164,4 +165,10 @@ interface QSModuleDerpFest {
     @IntoMap
     @StringKey(LocaleTile.TILE_SPEC)
     fun bindLocaleTile(localeTile: LocaleTile): QSTileImpl<*>
+
+    /** Inject ReadingModeTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(ReadingModeTile.TILE_SPEC)
+    fun bindReadingModeTile(readingModeTile: ReadingModeTile): QSTileImpl<*>
 }
