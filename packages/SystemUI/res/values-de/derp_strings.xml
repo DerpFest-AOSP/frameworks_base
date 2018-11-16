@@ -230,4 +230,7 @@
     <!-- Language toggle tile -->
     <string name="quick_settings_locale_label">Sprache</string>
     <string name="quick_settings_locale_more_locales_toast">Um die Kachel zu nutzen, müssen erst weitere Sprachen hinzugefügt werden.</string>
+
+    <!-- Navbar -->
+    <string name="systemui_tuner_navbar_title">Layout</string>
 </resources>
