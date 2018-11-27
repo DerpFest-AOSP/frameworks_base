@@ -166,4 +166,8 @@
     <string name="turn_on_bluetooth">Bluetooth einschalten</string>
     <string name="bluetooth_is_off">Bluetooth ist deaktiviert</string>
     <string name="tap_a_device_to_connect">Tippen, um ein Gerät zu verbinden oder zu trennen</string>
+
+    <!-- Kill button in notification guts -->
+    <string name="force_stop_dlg_title">Beenden erzwingen?</string>
+    <string name="force_stop_dlg_text">Das Beenden einer App zu erzwingen, kann zu unerwünschtem Verhalten führen.</string>
 </resources>
