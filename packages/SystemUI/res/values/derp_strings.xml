@@ -187,4 +187,8 @@
     <string name="turn_on_bluetooth">Use Bluetooth</string>
     <string name="bluetooth_is_off">Bluetooth is off</string>
     <string name="tap_a_device_to_connect">Tap to connect or disconnect a device</string>
+
+    <!-- Kill button in notification guts -->
+    <string name="force_stop_dlg_title">Force stop?</string>
+    <string name="force_stop_dlg_text">If you force stop an app, it may misbehave.</string>
 </resources>
