@@ -291,6 +291,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
     private float mMLModelThreshold;
     private String mPackageName;
     private float mMLResults;
+    private int mEdgeHeight;
 
     // For debugging
     private LogArray mPredictionLog = new LogArray(MAX_NUM_LOGGED_PREDICTIONS);
@@ -567,6 +568,18 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         }
     }
 
+    private void updateEdgeHeightValue() {
+        if (mDisplaySize == null) {
+            return;
+        }
+        int edgeHeightSetting = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.BACK_GESTURE_HEIGHT, 0, UserHandle.USER_CURRENT);
+        // subtracting sixths of mDisplaySize.y according to edgeHeightSetting
+        // 0 means full, 1 means one sixth and so on up till 5/6
+        mEdgeHeight = Math.round((float) mDisplaySize.y -
+                ((float) mDisplaySize.y) * ((float) edgeHeightSetting / 6));
+    }
+
     /**
      * Called when the nav/task bar is attached.
      */
@@ -609,6 +622,10 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
 
     public void onNavBarTransientStateChanged(boolean isTransient) {
         mIsNavBarShownTransiently = isTransient;
+    }
+
+    public void onNavigationHeightChanged() {
+        updateEdgeHeightValue();
     }
 
     private void disposeInputChannel() {
@@ -889,6 +906,11 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         if (y >= (mDisplaySize.y - mBottomGestureHeight)) {
             return false;
         }
+        if (mEdgeHeight != 0 &&
+                y < (mDisplaySize.y - mBottomGestureHeight - mEdgeHeight)) {
+            return false;
+        }
+
         // If the point is way too far (twice the margin), it is
         // not interesting to us for logging purposes, nor we
         // should process it.  Simply return false and keep
@@ -1230,6 +1252,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         if (mEdgeBackPlugin != null) {
             mEdgeBackPlugin.setDisplaySize(mDisplaySize);
         }
+        updateEdgeHeightValue();
         updateBackAnimationThresholds();
         updateLongSwipeWidth();
     }

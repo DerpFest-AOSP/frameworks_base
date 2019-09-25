@@ -96,7 +96,9 @@ import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
 /** */
-public class NavigationBarView extends FrameLayout implements TunerService.Tunable {
+public class NavigationBarView extends FrameLayout implements TunerService.Tunable,
+        NavigationModeController.ModeChangedListener {
+
     final static boolean DEBUG = false;
     final static String TAG = "NavBarView";
 
@@ -344,6 +346,9 @@ public class NavigationBarView extends FrameLayout implements TunerService.Tunab
         mButtonDispatchers.put(R.id.dpad_left, cursorLeftButton);
         mButtonDispatchers.put(R.id.dpad_right, cursorRightButton);
         mDeadZone = new DeadZone(this);
+
+        final NavigationModeController controller = Dependency.get(NavigationModeController.class);
+        controller.addListener(this);
     }
 
     public void setEdgeBackGestureHandler(EdgeBackGestureHandler edgeBackGestureHandler) {
@@ -886,6 +891,14 @@ public class NavigationBarView extends FrameLayout implements TunerService.Tunab
         mRotationButtonController.onNavigationModeChanged(mNavBarMode);
         updateRotationButton();
     }
+
+    @Override
+    public void onNavigationHeightChanged() {
+        mEdgeBackGestureHandler.onNavigationHeightChanged();
+    }
+
+    @Override
+    public void onNavigationModeChanged(int mode) { /* Do nothing */ }
 
     public void setAccessibilityButtonState(final boolean visible, final boolean longClickable) {
         mLongClickableAccessibilityButton = longClickable;
