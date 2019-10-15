@@ -23,9 +23,12 @@ import android.annotation.ColorInt;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Handler;
 import android.os.Trace;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -72,6 +75,8 @@ public class KeyguardStatusBarView extends RelativeLayout {
 
     private boolean mBatteryCharging;
 
+    private int mShowCarrierLabel;
+
     private TextView mCarrierLabel;
     private ImageView mMultiUserAvatar;
     private BatteryMeterView mBatteryView;
@@ -104,6 +109,13 @@ public class KeyguardStatusBarView extends RelativeLayout {
     // right and left padding applied to this view to account for cutouts and rounded corners
     private Pair<Integer, Integer> mPadding = new Pair(0, 0);
 
+    private ContentObserver mObserver = new ContentObserver(new Handler()) {
+        public void onChange(boolean selfChange, Uri uri) {
+            showStatusBarCarrier();
+            updateVisibilities();
+        }
+    };
+
     /**
      * The clipping on the top
      */
@@ -113,6 +125,25 @@ public class KeyguardStatusBarView extends RelativeLayout {
 
     public KeyguardStatusBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        showStatusBarCarrier();
+    }
+
+    private void showStatusBarCarrier() {
+        mShowCarrierLabel = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                Settings.System.STATUS_BAR_SHOW_CARRIER), false, mObserver);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        getContext().getContentResolver().unregisterContentObserver(mObserver);
     }
 
     @Override
@@ -214,7 +245,7 @@ public class KeyguardStatusBarView extends RelativeLayout {
                 R.dimen.rounded_corner_content_padding);
     }
 
-    private void updateVisibilities() {
+    public void updateVisibilities() {
         // Multi user avatar is disabled in favor of the user switcher chip
         if (!mKeyguardUserAvatarEnabled) {
             if (mMultiUserAvatar.getParent() == mStatusIconArea) {
@@ -244,6 +275,13 @@ public class KeyguardStatusBarView extends RelativeLayout {
                 mMultiUserAvatar.setVisibility(View.VISIBLE);
             } else {
                 mMultiUserAvatar.setVisibility(View.GONE);
+            }
+        }
+        if (mCarrierLabel != null) {
+            if (mShowCarrierLabel == 1 || mShowCarrierLabel == 3) {
+                mCarrierLabel.setVisibility(View.VISIBLE);
+            } else {
+                mCarrierLabel.setVisibility(View.GONE);
             }
         }
     }

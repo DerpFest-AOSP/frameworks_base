@@ -28,6 +28,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.widget.ViewClippingUtil;
 import com.android.systemui.R;
 import com.android.systemui.derp.logo.LogoImage;
+import com.android.systemui.statusbar.carrierlabel.CarrierLabel;
 import com.android.systemui.dagger.qualifiers.RootView;
 import com.android.systemui.plugins.DarkIconDispatcher;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
@@ -90,6 +91,7 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
     private final Optional<View> mOperatorNameViewOptional;
 
     private final LogoImage mLeftLogo;
+    private final CarrierLabel mCustomCarrierLabel;
 
     @VisibleForTesting
     float mExpandedHeight;
@@ -148,6 +150,7 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
         mOperatorNameViewOptional = operatorNameViewOptional;
         mDarkIconDispatcher = darkIconDispatcher;
         mLeftLogo = statusBarView.findViewById(R.id.statusbar_logo);
+        mCustomCarrierLabel = statusBarView.findViewById(R.id.statusbar_carrier_text);
 
         mView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
@@ -259,12 +262,16 @@ public class HeadsUpAppearanceController extends ViewController<HeadsUpStatusBar
                 mOperatorNameViewOptional.ifPresent(view -> hide(view, View.INVISIBLE));
                 if (mLeftLogo.getVisibility() != View.GONE)
                     mLeftLogo.setVisibility(View.INVISIBLE);
+                if (mCustomCarrierLabel.getVisibility() != View.GONE)
+                    mCustomCarrierLabel.setVisibility(View.INVISIBLE);
                 if (mLyricViewController != null) {
                     mLyricViewController.hideLyricView(mAnimationsEnabled);
                 }
             } else {
                 if (mLeftLogo.getVisibility() != View.GONE)
                     mLeftLogo.setVisibility(View.VISIBLE);
+                if (mCustomCarrierLabel.getVisibility() != View.GONE)
+                    mCustomCarrierLabel.setVisibility(View.VISIBLE);
                 if (!isRightClock)  {
                     show(clockView);
                 }
