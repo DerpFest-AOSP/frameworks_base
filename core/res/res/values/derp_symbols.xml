@@ -186,4 +186,13 @@
   <!-- Transparent color variants -->
   <java-symbol type="color" name="system_accent_transparent_background_light" />
   <java-symbol type="color" name="system_accent_transparent_background_dark" />
+
+   <!-- Pocket Lock -->
+    <java-symbol type="layout" name="pocket_lock_view" />
+    <java-symbol type="bool" name="config_pocketModeSupported" />
+
+    <!-- Pocket bridge -->
+    <java-symbol type="string" name="config_pocketBridgeSysfsInpocket" />
+    <!-- Pocket Service -->
+    <java-symbol type="string" name="config_pocketJudgeVendorSensorName" />
 </resources>
