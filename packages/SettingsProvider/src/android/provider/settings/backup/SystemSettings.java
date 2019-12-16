@@ -123,5 +123,6 @@ public class SystemSettings {
         Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD,
         Settings.System.LOCKSCREEN_ROTATION,
         Settings.System.LOCK_HIDE_STATUS_BAR,
+        Settings.System.FLASHLIGHT_ON_CALL,
     };
 }
