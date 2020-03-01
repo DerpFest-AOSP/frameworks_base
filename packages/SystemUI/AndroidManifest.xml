@@ -372,6 +372,8 @@
     <!-- Parallel spaces -->
     <uses-permission android:name="com.android.permission.MANAGE_PARALLEL_SPACES" />
 
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+
     <application
         android:name=".SystemUIApplication"
         android:persistent="true"

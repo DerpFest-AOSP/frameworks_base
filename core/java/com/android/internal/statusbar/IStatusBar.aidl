@@ -372,4 +372,5 @@ oneway interface IStatusBar
      * DerpFest extensions
      */
     void toggleCameraFlash();
+    void killForegroundApp();
 }
