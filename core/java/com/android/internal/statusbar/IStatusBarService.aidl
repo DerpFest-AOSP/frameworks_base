@@ -245,4 +245,5 @@ interface IStatusBarService
      * DerpFest extensions
      */
     void toggleCameraFlash();
+    void killForegroundApp();
 }
