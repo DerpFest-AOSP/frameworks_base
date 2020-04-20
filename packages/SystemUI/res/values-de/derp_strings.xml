@@ -29,6 +29,10 @@
     <string name="accessibility_quick_settings_heads_up_off">Pop-up aus.</string>
     <string name="accessibility_quick_settings_heads_up_on">Pop-up an.</string>
 
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">Battery Share</string>
+    <string name="quick_settings_powershare_enabled_label">Battery Share ist aktiviert</string>
+
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">Synchronisation</string>
     <string name="accessibility_quick_settings_sync_off">Synchronisierung aus.</string>
