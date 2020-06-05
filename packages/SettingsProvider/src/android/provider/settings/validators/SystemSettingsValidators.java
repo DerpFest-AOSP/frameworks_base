@@ -253,6 +253,7 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.HAPTIC_ON_SWITCH, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.HAPTIC_ON_SLIDER, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.HAPTIC_ON_POWER_MENU, BOOLEAN_VALIDATOR);
-        VALIDATORS.put(System.RINGTONE_VIBRATION_PATTERN, new InclusiveIntegerRangeValidator(0, 4));
+        VALIDATORS.put(System.RINGTONE_VIBRATION_PATTERN, new InclusiveIntegerRangeValidator(0, 5));
+        VALIDATORS.put(System.CUSTOM_RINGTONE_VIBRATION_PATTERN, ANY_STRING_VALIDATOR);
     }
 }
