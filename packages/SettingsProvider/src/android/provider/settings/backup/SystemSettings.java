@@ -124,5 +124,7 @@ public class SystemSettings {
         Settings.System.LOCKSCREEN_ROTATION,
         Settings.System.LOCK_HIDE_STATUS_BAR,
         Settings.System.FLASHLIGHT_ON_CALL,
+        Settings.System.FLASHLIGHT_ON_CALL_IGNORE_DND,
+        Settings.System.FLASHLIGHT_ON_CALL_RATE,
     };
 }
