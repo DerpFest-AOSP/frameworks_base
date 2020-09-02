@@ -4892,4 +4892,6 @@
   <java-symbol type="id" name="language_picker_header" />
 
   <java-symbol type="dimen" name="status_bar_height_default" />
+
+  <java-symbol type="dimen" name="decor_corner_radius" />
 </resources>
