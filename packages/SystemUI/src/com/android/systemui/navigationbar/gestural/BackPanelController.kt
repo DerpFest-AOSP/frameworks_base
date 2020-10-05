@@ -962,10 +962,6 @@ class BackPanelController internal constructor(
             GestureState.ACTIVE -> {
                 previousXTranslationOnActiveOffset = previousXTranslation
                 updateRestingArrowDimens()
-                vibratorHelper.cancel()
-                mainHandler.postDelayed(10L) {
-                    vibratorHelper.vibrate(VIBRATE_ACTIVATED_EFFECT)
-                }
                 val popVelocity = if (previousState == GestureState.INACTIVE) {
                     POP_ON_INACTIVE_TO_ACTIVE_VELOCITY
                 } else {
@@ -986,7 +982,7 @@ class BackPanelController internal constructor(
 
                 mView.popOffEdge(POP_ON_INACTIVE_VELOCITY)
 
-                vibratorHelper.vibrate(VIBRATE_DEACTIVATED_EFFECT)
+//                vibratorHelper.vibrate(VIBRATE_DEACTIVATED_EFFECT)
                 updateRestingArrowDimens()
             }
             GestureState.FLUNG -> {
@@ -1012,6 +1008,11 @@ class BackPanelController internal constructor(
                     mainHandler.postDelayed(onAlphaEndSetGoneStateListener.runnable,
                             MIN_DURATION_COMMITTED_ANIMATION)
                 }
+
+//                vibratorHelper.cancel()
+//                    mainHandler.postDelayed(10L) {
+//                        vibratorHelper.vibrate(VIBRATE_ACTIVATED_EFFECT)
+//                    }
             }
             GestureState.CANCELLED -> {
                 val delay = max(0, MIN_DURATION_CANCELLED_ANIMATION - elapsedTimeSinceEntry)
@@ -1020,7 +1021,7 @@ class BackPanelController internal constructor(
                 val springForceOnCancelled = params.cancelledIndicator
                         .arrowDimens.alphaSpring?.get(0f)?.value
                 mView.popArrowAlpha(0f, springForceOnCancelled)
-                mainHandler.postDelayed(10L) { vibratorHelper.cancel() }
+//                mainHandler.postDelayed(10L) { vibratorHelper.cancel() }
             }
         }
     }
