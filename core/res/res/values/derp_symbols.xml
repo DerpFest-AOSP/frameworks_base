@@ -62,7 +62,9 @@
     <!-- On-device lights (LED) capabilities -->
     <java-symbol type="integer" name="config_deviceLightCapabilities" />
 
-    <!-- Button backlight -->
+    <!-- Button and keyboard backlight -->
     <java-symbol type="integer" name="config_deviceSupportsButtonBrightnessControl" />
+    <java-symbol type="integer" name="config_deviceSupportsKeyboardBrightnessControl" />
     <java-symbol type="dimen" name="config_buttonBrightnessSettingDefaultFloat" />
+    <java-symbol type="dimen" name="config_keyboardBrightnessSettingDefaultFloat" />
 </resources>
