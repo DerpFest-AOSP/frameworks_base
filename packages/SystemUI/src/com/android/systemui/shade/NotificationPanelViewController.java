@@ -245,6 +245,7 @@ import com.android.systemui.statusbar.policy.KeyguardUserSwitcherController;
 import com.android.systemui.statusbar.policy.KeyguardUserSwitcherView;
 import com.android.systemui.statusbar.policy.OnHeadsUpChangedListener;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
+import com.android.systemui.tuner.TunerService;
 import com.android.systemui.unfold.SysUIUnfoldComponent;
 import com.android.systemui.util.Compile;
 import com.android.systemui.util.LargeScreenUtils;
@@ -301,6 +302,10 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     private static final String COUNTER_PANEL_OPEN = "panel_open";
     public static final String COUNTER_PANEL_OPEN_QS = "panel_open_qs";
     private static final String COUNTER_PANEL_OPEN_PEEK = "panel_open_peek";
+
+    private static final String NOTIFICATION_MATERIAL_DISMISS =
+            "system:" + Settings.System.NOTIFICATION_MATERIAL_DISMISS;
+
     private static final Rect M_DUMMY_DIRTY_RECT = new Rect(0, 0, 1, 1);
     private static final Rect EMPTY_RECT = new Rect();
     /**
@@ -380,6 +385,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     private final KeyguardRootView mKeyguardRootView;
     private final QuickSettingsController mQsController;
     private final TouchHandler mTouchHandler = new TouchHandler();
+    private final TunerService mTunerService;
 
     private long mDownTime;
     private boolean mTouchSlopExceededBeforeDown;
@@ -667,6 +673,8 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
 
     private boolean mBlockedGesturalNavigation = false;
 
+    private boolean mShowDimissButton;
+
     private final Runnable mFlingCollapseRunnable = () -> fling(0, false /* expand */,
             mNextCollapseSpeedUpFactor, false /* expandBecauseOfFalsing */);
     private final Runnable mAnimateKeyguardBottomAreaInvisibleEndRunnable =
@@ -822,6 +830,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
             KeyguardViewConfigurator keyguardViewConfigurator,
             KeyguardFaceAuthInteractor keyguardFaceAuthInteractor,
             KeyguardRootView keyguardRootView,
+            TunerService tunerService,
             Context context) {
         keyguardStateController.addCallback(new KeyguardStateController.Callback() {
             @Override
@@ -919,6 +928,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
                 LargeScreenUtils.shouldUseSplitNotificationShade(mResources);
         mView.setWillNotDraw(!DEBUG_DRAWABLE);
         mShadeHeaderController = shadeHeaderController;
+        mTunerService = tunerService;
         mLayoutInflater = layoutInflater;
         mFeatureFlags = featureFlags;
         mAnimateBack = mFeatureFlags.isEnabled(Flags.WM_SHADE_ANIMATE_BACK_GESTURE);
@@ -3179,7 +3189,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
     }
 
     private boolean isPanelVisibleBecauseOfHeadsUp() {
-        return (mHeadsUpManager.hasPinnedHeadsUp() || mHeadsUpAnimatingAway)
+        return mHeadsUpManager != null && (mHeadsUpManager.hasPinnedHeadsUp() || mHeadsUpAnimatingAway)
                 && mBarState == StatusBarState.SHADE;
     }
 
@@ -4087,7 +4097,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
         return mExpandedHeight;
     }
 
-    float getExpandedFraction() {
+    public float getExpandedFraction() {
         return mExpandedFraction;
     }
 
@@ -4787,7 +4797,8 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
         positionClockAndNotifications(true /* forceUpdate */);
     }
 
-    private final class ShadeAttachStateChangeListener implements View.OnAttachStateChangeListener {
+    private final class ShadeAttachStateChangeListener implements View.OnAttachStateChangeListener,
+            TunerService.Tunable {
         @Override
         public void onViewAttachedToWindow(View v) {
             mFragmentService.getFragmentHostManager(mView)
@@ -4799,6 +4810,7 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE), false,
                     mDoubleTapToSleepObserver);
             mDoubleTapToSleepObserver.onChange(true);
+            mTunerService.addTunable(this, NOTIFICATION_MATERIAL_DISMISS);
             // Theme might have changed between inflating this view and attaching it to the
             // window, so
             // force a call to onThemeChanged
@@ -4816,7 +4828,21 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
                     .removeTagListener(QS.TAG, mQsController.getQsFragmentListener());
             mStatusBarStateController.removeCallback(mStatusBarStateListener);
             mConfigurationController.removeCallback(mConfigurationListener);
+            mTunerService.removeTunable(this);
             mFalsingManager.removeTapListener(mFalsingTapListener);
+        }
+
+        @Override
+        public void onTuningChanged(String key, String newValue) {
+            switch (key) {
+                case NOTIFICATION_MATERIAL_DISMISS:
+                    mShowDimissButton =
+                            TunerService.parseIntegerSwitch(newValue, false);
+                    updateDismissAllVisibility();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -5436,6 +5462,17 @@ public final class NotificationPanelViewController implements ShadeSurface, Dump
         @Override
         public void clearNotificationEffects() {
             mCentralSurfaces.clearNotificationEffects();
+        }
+    }
+
+    public void updateDismissAllVisibility() {
+        if (mCentralSurfaces == null) return;
+
+        if (mShowDimissButton && mBarState != StatusBarState.KEYGUARD && !isFullyCollapsed()
+                && !isPanelVisibleBecauseOfHeadsUp()) {
+            mCentralSurfaces.updateDismissAllVisibility(true);
+        } else {
+            mCentralSurfaces.updateDismissAllVisibility(false);
         }
     }
 
