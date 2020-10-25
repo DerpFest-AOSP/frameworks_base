@@ -181,4 +181,7 @@
     <!-- Language toggle tile -->
     <string name="quick_settings_locale_label">Sprache</string>
     <string name="quick_settings_locale_more_locales_toast">Bitte mehr als eine Sprache einrichten</string>
+
+    <!-- DerpSpace Tile -->
+    <string name="quick_derpspace_toast">LOL, you really thought that long click will take you somewhere!!!</string>
 </resources>

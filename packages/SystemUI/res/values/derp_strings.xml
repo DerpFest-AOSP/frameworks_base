@@ -208,4 +208,8 @@
     <!-- Language toggle tile -->
     <string name="quick_settings_locale_label">Language</string>
     <string name="quick_settings_locale_more_locales_toast">Configure multiple languages first</string>
+
+    <!-- DerpSpace Tile -->
+    <string name="quick_derpspace_label">DerpSpace</string>
+    <string name="quick_derpspace_toast">LOL, you really thought that long click will take you somewhere!!!</string>
 </resources>
