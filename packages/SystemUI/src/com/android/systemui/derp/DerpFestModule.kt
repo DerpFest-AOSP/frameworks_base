@@ -12,6 +12,7 @@ import com.android.systemui.qs.tiles.CaffeineTile
 import com.android.systemui.qs.tiles.CellularTile
 import com.android.systemui.qs.tiles.CompassTile
 import com.android.systemui.qs.tiles.DataSwitchTile
+import com.android.systemui.qs.tiles.DerpSpaceTile
 import com.android.systemui.qs.tiles.HeadsUpTile
 import com.android.systemui.qs.tiles.LocaleTile
 import com.android.systemui.qs.tiles.PowerShareTile
@@ -68,6 +69,12 @@ interface DerpFestModule {
     @IntoMap
     @StringKey(DataSwitchTile.TILE_SPEC)
     fun bindDataSwitchTile(dataSwitchTile: DataSwitchTile): QSTileImpl<*>
+
+    /** Inject DerpSpaceTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(DerpSpaceTile.TILE_SPEC)
+    fun bindDerpSpaceTile(derpSpaceTile: DerpSpaceTile): QSTileImpl<*>
 
     /** Inject HeadsUpTile into tileMap in QSModule */
     @Binds
