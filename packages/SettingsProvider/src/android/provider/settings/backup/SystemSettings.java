@@ -118,5 +118,6 @@ public class SystemSettings {
         Settings.System.CUSTOM_NOTIFICATION_VIBRATION_PATTERN,
         Settings.System.BACK_GESTURE_HEIGHT,
         Settings.System.SENSOR_BLOCK,
+        Settings.System.VOLUME_DIALOG_TIMEOUT,
     };
 }
