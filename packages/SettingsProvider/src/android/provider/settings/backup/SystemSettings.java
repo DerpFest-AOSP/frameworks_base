@@ -120,5 +120,6 @@ public class SystemSettings {
         Settings.System.DISABLE_RIPPLE_EFFECT,
         Settings.System.LOCK_HIDE_STATUS_BAR,
         Settings.System.KEYGUARD_QUICK_TOGGLES_NEW,
+        Settings.System.AMBIENT_WAKE_GESTURES,
     };
 }
