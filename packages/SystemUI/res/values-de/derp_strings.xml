@@ -116,4 +116,10 @@
     <string name="screenrecord_delete_label">Löschen</string>
     <!-- A toast message shown after successfully deleting a screen recording [CHAR LIMIT=NONE] -->
     <string name="screenrecord_delete_description">Bildschirmaufzeichnung gelöscht</string>
+
+    <!-- Screen record -->
+    <string name="screenrecord_stopdot_label">Stopppunkt anzeigen</string>
+    <string name="screenrecord_stopdot_summary">Gedrückthalten zum Verschieben</string>
+    <string name="screenrecord_lowquality_label">Geringere Qualität</string>
+    <string name="screenrecord_lowquality_summary">Zum Verringern der Dateigröße</string>
 </resources>
