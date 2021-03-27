@@ -36,5 +36,5 @@
     <dimen name="network_traffic_padding">1dp</dimen>
 
     <!-- AoD battery bar -->
-    <dimen name="battery_bar_view_height">6dp</dimen>
+    <dimen name="battery_bar_view_height">4dp</dimen>
 </resources>
