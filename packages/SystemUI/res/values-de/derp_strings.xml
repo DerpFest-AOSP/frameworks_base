@@ -122,4 +122,6 @@
     <string name="screenrecord_stopdot_summary">Gedrückthalten zum Verschieben</string>
     <string name="screenrecord_lowquality_label">Geringere Qualität</string>
     <string name="screenrecord_lowquality_summary">Zum Verringern der Dateigröße</string>
+    <string name="screenrecord_longer_timeout_switch_label">Max. Dateigröße erhöhen</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Größe der Aufnahme auf 15 GB begrenzen</string>
 </resources>
