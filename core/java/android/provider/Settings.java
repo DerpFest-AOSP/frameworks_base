@@ -6606,13 +6606,6 @@ public final class Settings {
         public static final String BACK_GESTURE_HAPTIC = "back_gesture_haptic";
 
         /**
-         * Whether to show the kill app button in notification guts
-         * @hide
-         */
-        public static final String NOTIFICATION_GUTS_KILL_APP_BUTTON =
-                "notification_guts_kill_app_button";
-
-        /**
          * Whether to show floating rotation button
          * @hide
          */
