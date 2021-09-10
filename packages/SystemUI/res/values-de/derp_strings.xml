@@ -91,4 +91,8 @@
     <string name="accessibility_dpad_left">Cursor links</string>
     <string name="accessibility_dpad_right">Cursor rechts</string>
 
+     <!-- Data usage info in QS footer -->
+    <string name="usage_data">heute verbraucht</string>
+    <string name="usage_data_default_suffix">Mobildaten</string>
+    <string name="usage_wifi_default_suffix">WLAN</string>
 </resources>
