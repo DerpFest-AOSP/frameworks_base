@@ -60,4 +60,10 @@
 
     <!-- Size to enlarge Enrollment GHBM Dot Size by in DP. -->
     <dimen name="udfps_enroll_dot_additional_size">0dp</dimen>
+
+    <!-- Maximum horizontal offset of statusbar for burn-in protection -->
+    <dimen name="status_bar_offset_max_x">4dp</dimen>
+
+    <!-- Maximum vertical offset of statusbar for burn-in protection -->
+    <dimen name="status_bar_offset_max_y">4dp</dimen>
 </resources>
