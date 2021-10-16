@@ -47,6 +47,12 @@
     <string name="accessibility_quick_settings_reading_mode_on">Lesemodus an.</string>
     <string name="accessibility_quick_settings_reading_mode_off">Lesemodus aus.</string>
 
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Ton</string>
+    <string name="quick_settings_sound_ring">Klingeln</string>
+    <string name="quick_settings_sound_vibrate">Vibrieren</string>
+    <string name="quick_settings_sound_silent">Still</string>
+
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">Synchronisation</string>
     <string name="accessibility_quick_settings_sync_off">Synchronisierung aus.</string>
