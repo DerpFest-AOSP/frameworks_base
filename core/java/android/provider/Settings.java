@@ -6349,6 +6349,13 @@ public final class Settings {
                 "display_picture_adjustment";
 
         /**
+         * Whether to hide clock when launcher is visible
+         * default: false
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK_AUTO_HIDE = "status_bar_clock_auto_hide";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
