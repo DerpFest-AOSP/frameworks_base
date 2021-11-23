@@ -252,6 +252,6 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.NOTIFICATION_VIBRATION_PATTERN, new InclusiveIntegerRangeValidator(0, 5));
         VALIDATORS.put(System.CUSTOM_NOTIFICATION_VIBRATION_PATTERN, CUSTOM_VIBRATION_PATTERN_VALIDATOR);
         VALIDATORS.put(System.SENSOR_BLOCK, BOOLEAN_VALIDATOR);
-        VALIDATORS.put(System.VOLUME_DIALOG_TIMEOUT, NON_NEGATIVE_INTEGER_VALIDATOR);
+        VALIDATORS.put(System.VOLUME_DIALOG_TIMEOUT, new InclusiveIntegerRangeValidator(1, 7));
     }
 }
