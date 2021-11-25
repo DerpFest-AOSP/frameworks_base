@@ -39,7 +39,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceViewHolder;
-import androidx.preference.SwitchPreference;
+import org.derpfest.support.preferences.SwitchPreference;
 
 import com.android.settingslib.utils.BuildCompatUtils;
 

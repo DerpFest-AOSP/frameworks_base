@@ -58,6 +58,7 @@ android_library {
         "setupdesign",
         "zxing-core-1.7",
         "androidx.room_room-runtime",
+        "VendorSupport-preference",
 
     ],
 

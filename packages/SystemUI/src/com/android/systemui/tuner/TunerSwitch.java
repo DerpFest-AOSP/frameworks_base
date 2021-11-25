@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.provider.Settings;
 import android.util.AttributeSet;
 
-import androidx.preference.SwitchPreference;
+import org.derpfest.support.preferences.SwitchPreference;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.systemui.Dependency;

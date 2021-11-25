@@ -344,6 +344,7 @@ android_library {
         "SystemUICustomizationLib",
         "SystemUI-statsd",
         "SettingsLib",
+        "VendorSupport-preference",
         "androidx.viewpager2_viewpager2",
         "androidx.legacy_legacy-support-v4",
         "androidx.recyclerview_recyclerview",
