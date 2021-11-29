@@ -93,6 +93,8 @@ import com.android.systemui.R;
 import com.android.wm.shell.bubbles.Bubbles;
 import com.android.wm.shell.dagger.DynamicOverride;
 
+import com.android.systemui.biometrics.PixelUdfpsHbmProvider;
+
 import java.util.Optional;
 import java.util.concurrent.Executor;
 
@@ -203,6 +205,10 @@ public abstract class SystemUIModule {
 
     @BindsOptionalOf
     abstract AlternateUdfpsTouchProvider optionalUdfpsTouchProvider();
+
+    @SysUISingleton
+    @Binds
+    abstract UdfpsHbmProvider bindUdfpsHbmProvider(PixelUdfpsHbmProvider provider);
 
     @SysUISingleton
     @Binds
