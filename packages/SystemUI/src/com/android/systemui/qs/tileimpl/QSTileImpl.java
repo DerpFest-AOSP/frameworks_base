@@ -40,6 +40,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.text.format.DateUtils;
 import android.util.ArraySet;
 import android.util.Log;
@@ -312,7 +313,10 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
         if (!mFalsingManager.isFalseTap(FalsingManager.LOW_PENALTY)) {
             mHandler.obtainMessage(H.CLICK, eventId, 0, view).sendToTarget();
         }
-	mVibrator.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_CLICK));
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0) {
+            mVibrator.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_CLICK));
+        }
     }
 
     public void secondaryClick(@Nullable View view) {
