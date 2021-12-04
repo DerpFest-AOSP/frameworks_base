@@ -20,11 +20,14 @@ import static com.android.systemui.keyguard.WakefulnessLifecycle.WAKEFULNESS_AWA
 import static com.android.systemui.keyguard.WakefulnessLifecycle.WAKEFULNESS_WAKING;
 
 import android.annotation.NonNull;
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.SystemProperties;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -67,6 +70,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi;
 public final class DozeServiceHost implements DozeHost {
     private static final String TAG = "DozeServiceHost";
     private final ArrayList<Callback> mCallbacks = new ArrayList<>();
+    private final Context mContext;
     private final DozeLog mDozeLog;
     private final PowerManager mPowerManager;
     private boolean mAnimateWakeup;
@@ -100,6 +104,7 @@ public final class DozeServiceHost implements DozeHost {
     private boolean mAlwaysOnSuppressed;
     private boolean mPulsePending;
     private DozeInteractor mDozeInteractor;
+    private boolean mIsAmbientSwipeEnabled;
 
     @Inject
     public DozeServiceHost(DozeLog dozeLog, PowerManager powerManager,
@@ -116,7 +121,8 @@ public final class DozeServiceHost implements DozeHost {
             NotificationWakeUpCoordinator notificationWakeUpCoordinator,
             AuthController authController,
             NotificationIconAreaController notificationIconAreaController,
-            DozeInteractor dozeInteractor) {
+            DozeInteractor dozeInteractor,
+            Context context) {
         super();
         mDozeLog = dozeLog;
         mPowerManager = powerManager;
@@ -137,6 +143,7 @@ public final class DozeServiceHost implements DozeHost {
         mNotificationIconAreaController = notificationIconAreaController;
         mHeadsUpManagerPhone.addListener(mOnHeadsUpChangedListener);
         mDozeInteractor = dozeInteractor;
+        mContext = context;
     }
 
     // TODO: we should try to not pass status bar in here if we can avoid it.
@@ -233,6 +240,9 @@ public final class DozeServiceHost implements DozeHost {
 
     @Override
     public void pulseWhileDozing(@NonNull PulseCallback callback, int reason) {
+        mIsAmbientSwipeEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.DOZE_AMBIENT_SWIPE, 1, UserHandle.USER_CURRENT) == 1;
+
         if (reason == DozeLog.PULSE_REASON_SENSOR_LONG_PRESS) {
             mPowerManager.wakeUp(SystemClock.uptimeMillis(), PowerManager.WAKE_REASON_GESTURE,
                                  "com.android.systemui:LONG_PRESS");
@@ -254,7 +264,9 @@ public final class DozeServiceHost implements DozeHost {
             @Override
             public void onPulseStarted() {
                 callback.onPulseStarted(); // requestState(DozeMachine.State.DOZE_PULSING)
-                mCentralSurfaces.updateNotificationPanelTouchState();
+                if (mIsAmbientSwipeEnabled) {
+                    mCentralSurfaces.updateNotificationPanelTouchState();
+                }
                 setPulsing(true);
             }
 
@@ -277,7 +289,9 @@ public final class DozeServiceHost implements DozeHost {
                 }
                 mCentralSurfaces.updateScrimController();
                 mPulseExpansionHandler.setPulsing(pulsing);
-                mNotificationWakeUpCoordinator.setPulsing(pulsing);
+                if (mIsAmbientSwipeEnabled) {
+                    mNotificationWakeUpCoordinator.setPulsing(pulsing);
+                }
             }
         }, reason);
         // DozeScrimController is in pulse state, now let's ask ScrimController to start
