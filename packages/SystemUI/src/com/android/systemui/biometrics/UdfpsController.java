@@ -31,6 +31,7 @@ import static com.android.systemui.classifier.Classifier.UDFPS_AUTHENTICATION;
 import static com.android.systemui.flags.Flags.ONE_WAY_HAPTICS_API_MIGRATION;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -328,7 +329,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
                     return;
                 }
                 if (vendorCode == mUdfpsVendorCode) {
-                    if (mContext.getResources().getBoolean(R.bool.config_pulseOnFingerDown)) {
+                    if (!wakeOnFodPressed()) {
                         mContext.sendBroadcastAsUser(new Intent(PULSE_ACTION),
                                 new UserHandle(UserHandle.USER_CURRENT));
                     } else {
@@ -958,6 +959,11 @@ public class UdfpsController implements DozeReceiver, Dumpable {
         udfpsShell.setUdfpsOverlayController(mUdfpsOverlayController);
 
         mUdfpsVendorCode = mContext.getResources().getInteger(com.android.systemui.R.integer.config_udfps_vendor_code);
+    }
+
+    private boolean wakeOnFodPressed() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.WAKE_ON_FOD_PRESSED, 1) == 1;
     }
 
     /**
