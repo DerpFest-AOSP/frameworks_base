@@ -375,6 +375,8 @@ class AuthRippleController @Inject constructor(
     private val udfpsControllerCallback =
         object : UdfpsController.Callback {
             override fun onFingerDown() {
+                if (Settings.Secure.getInt(sysuiContext.contentResolver,
+                       LMOSettings.Secure.UDFPS_ANIM, 0) == 0) {
                 // only show dwell ripple for device entry
                 if (keyguardUpdateMonitor.isFingerprintDetectionRunning) {
                     showDwellRipple()
@@ -382,7 +384,10 @@ class AuthRippleController @Inject constructor(
             }
 
             override fun onFingerUp() {
-                mView.retractDwellRipple()
+                if (Settings.Secure.getInt(sysuiContext.contentResolver,
+                        Settings.Secure.UDFPS_ANIM, 0) == 0) {
+                    mView.retractDwellRipple()
+                }
             }
         }
 
