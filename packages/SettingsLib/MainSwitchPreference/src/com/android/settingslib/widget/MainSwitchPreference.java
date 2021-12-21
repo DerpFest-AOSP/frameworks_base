@@ -131,7 +131,9 @@ public class MainSwitchPreference extends TwoStatePreference implements OnMainSw
         super.setChecked(isChecked);
         final boolean hapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
-        if (hapticEnabled) {
+        final boolean switchHapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                "haptic_on_switch", 1) != 0;
+        if (hapticEnabled && switchHapticEnabled) {
             mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
         }
     }

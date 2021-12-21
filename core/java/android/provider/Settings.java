@@ -6500,6 +6500,30 @@ public final class Settings {
         public static final String LOCKSCREEN_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
 
         /**
+         * Whether do haptic feedback on clicked qs tiles
+         * @hide
+         */
+        public static final String HAPTIC_ON_QS = "haptic_on_qs";
+
+        /**
+         * Whether do haptic feedback on clicked status bar
+         * @hide
+         */
+        public static final String HAPTIC_ON_STATUSBAR = "haptic_on_statusbar";
+
+        /**
+         * Whether do haptic feedback on clicked switch
+         * @hide
+         */
+        public static final String HAPTIC_ON_SWITCH = "haptic_on_switch";
+
+        /**
+         * Whether do haptic feedback on changed slider value
+         * @hide
+         */
+        public static final String HAPTIC_ON_SLIDER = "haptic_on_slider";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate

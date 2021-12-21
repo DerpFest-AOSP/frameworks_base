@@ -314,7 +314,9 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
             mHandler.obtainMessage(H.CLICK, eventId, 0, view).sendToTarget();
         }
         if (Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0) {
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0 &&
+            Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HAPTIC_ON_QS, 1) != 0) {
             mVibrator.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_CLICK));
         }
     }
