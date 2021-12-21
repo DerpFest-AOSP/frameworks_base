@@ -17,6 +17,9 @@
 package com.android.settingslib.widget;
 
 import android.content.Context;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -28,25 +31,36 @@ import androidx.preference.SwitchPreference;
  */
 public class AppSwitchPreference extends SwitchPreference {
 
+    private final Context mContext;
+    private final Vibrator mVibrator;
+
     public AppSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         setLayoutResource(R.layout.preference_app);
+        mContext = context;
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     public AppSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setLayoutResource(R.layout.preference_app);
+        mContext = context;
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     public AppSwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayoutResource(R.layout.preference_app);
+        mContext = context;
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     public AppSwitchPreference(Context context) {
         super(context);
         setLayoutResource(R.layout.preference_app);
+        mContext = context;
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -56,6 +70,16 @@ public class AppSwitchPreference extends SwitchPreference {
         if (switchView != null) {
             final View rootView = switchView.getRootView();
             rootView.setFilterTouchesWhenObscured(true);
+        }
+    }
+
+    @Override
+    protected void performClick(View view) {
+        super.performClick(view);
+        final boolean hapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
+        if (hapticEnabled) {
+            mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
         }
     }
 }

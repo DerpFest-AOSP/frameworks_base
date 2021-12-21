@@ -18,6 +18,9 @@ package com.android.settingslib.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.widget.Switch;
 
@@ -37,6 +40,9 @@ public class MainSwitchPreference extends TwoStatePreference implements OnMainSw
     private final List<OnMainSwitchChangeListener> mSwitchChangeListeners = new ArrayList<>();
 
     private MainSwitchBar mMainSwitchBar;
+
+    private Context mContext;
+    private Vibrator mVibrator;
 
     public MainSwitchPreference(Context context) {
         super(context);
@@ -91,6 +97,9 @@ public class MainSwitchPreference extends TwoStatePreference implements OnMainSw
             setIconSpaceReserved(bIconSpaceReserved);
             a.recycle();
         }
+
+        mContext = context;
+        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -120,6 +129,11 @@ public class MainSwitchPreference extends TwoStatePreference implements OnMainSw
     @Override
     public void onSwitchChanged(Switch switchView, boolean isChecked) {
         super.setChecked(isChecked);
+        final boolean hapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
+        if (hapticEnabled) {
+            mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
+        }
     }
 
     /**
