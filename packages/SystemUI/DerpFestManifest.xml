@@ -15,6 +15,9 @@
     <!-- DataSwitch tile -->
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
 
+    <!-- Timeout reboot-->
+    <uses-permission android:name="android.permission.REBOOT" />
+
     <!-- SystemUI Tuner -->
     <application>
         <activity-alias
