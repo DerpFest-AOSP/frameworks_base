@@ -8,7 +8,7 @@
     <dimen name="global_actions_avatar_size">24dp</dimen>
 
     <!-- Width of the battery icon in the status bar when set to circle style. -->
-    <dimen name="status_bar_battery_icon_circle_width">14.5dp</dimen>
+    <dimen name="status_bar_battery_icon_circle_width">13.5dp</dimen>
 
     <!-- QQS Brightness slider -->
     <dimen name="qqs_top_brightness_margin_top">4dp</dimen>
