@@ -271,6 +271,7 @@ import com.android.server.am.BaseErrorDialog;
 import com.android.server.am.PendingIntentController;
 import com.android.server.am.PendingIntentRecord;
 import com.android.server.am.UserState;
+import com.android.server.app.AppLockManagerServiceInternal;
 import com.android.server.firewall.IntentFirewall;
 import com.android.server.pm.UserManagerService;
 import com.android.server.policy.PermissionPolicyInternal;
@@ -278,6 +279,7 @@ import com.android.server.sdksandbox.SdkSandboxManagerLocal;
 import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.uri.NeededUriGrants;
 import com.android.server.uri.UriGrantsManagerInternal;
+import com.android.server.usage.AppStandbyInternal;
 import com.android.server.wallpaper.WallpaperManagerInternal;
 
 import java.io.BufferedReader;
@@ -790,6 +792,8 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
 
     private Set<Integer> mProfileOwnerUids = new ArraySet<Integer>();
 
+    public AppStandbyInternal mAppStandbyInternal;
+
     private final class SettingObserver extends ContentObserver {
         private final Uri mFontScaleUri = Settings.System.getUriFor(FONT_SCALE);
         private final Uri mHideErrorDialogsUri = Settings.Global.getUriFor(HIDE_ERROR_DIALOGS);
@@ -843,6 +847,8 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         }
     };
 
+    private AppLockManagerServiceInternal mAppLockManagerService = null;
+
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PACKAGE)
     public ActivityTaskManagerService(Context context) {
         mContext = context;
@@ -873,6 +879,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
             // TODO(b/258792202) Cleanup once ASM is ready to launch
             ActivitySecurityModelFeatureFlags.initialize(mContext.getMainExecutor(), pm);
         }
+        mAppStandbyInternal = LocalServices.getService(AppStandbyInternal.class);
     }
 
     public void onInitPowerManagement() {
@@ -1781,6 +1788,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
 
         final int callingPid = Binder.getCallingPid();
         final int callingUid = Binder.getCallingUid();
+
         final SafeActivityOptions safeOptions = SafeActivityOptions.fromBundle(bOptions);
         final long origId = Binder.clearCallingIdentity();
         try {
@@ -3812,6 +3820,17 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
                     Slog.w(TAG, "takeTaskSnapshot: taskId=" + taskId + " not found or not visible");
                     return null;
                 }
+
+                final Task rootTask = task.getRootTask();
+                final String packageName =
+                    rootTask != null && rootTask.realActivity != null
+                        ? rootTask.realActivity.getPackageName()
+                        : null;
+                if (packageName != null && getAppLockManagerService().requireUnlock(
+                        packageName, task.mUserId)) {
+                    return null;
+                }
+                
                 if (updateCache) {
                     return mWindowManager.mTaskSnapshotController.recordSnapshot(task,
                             true /* snapshotHome */);
@@ -5258,6 +5277,13 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
             mWallpaperManagerInternal = LocalServices.getService(WallpaperManagerInternal.class);
         }
         return mWallpaperManagerInternal;
+    }
+
+    AppLockManagerServiceInternal getAppLockManagerService() {
+        if (mAppLockManagerService == null) {
+            mAppLockManagerService = LocalServices.getService(AppLockManagerServiceInternal.class);
+        }
+        return mAppLockManagerService;
     }
 
     AppWarnings getAppWarningsLocked() {
@@ -7144,6 +7170,14 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         @Override
         public void unregisterTaskStackListener(ITaskStackListener listener) {
             ActivityTaskManagerService.this.unregisterTaskStackListener(listener);
+        }
+
+        @Override
+        public boolean isVisibleActivity(IBinder activityToken) {
+            synchronized (mGlobalLock) {
+                final ActivityRecord r = ActivityRecord.isInRootTaskLocked(activityToken);
+                return r != null && r.isInterestingToUserLocked();
+            }
         }
     }
 }

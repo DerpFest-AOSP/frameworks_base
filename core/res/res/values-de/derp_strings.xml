@@ -52,4 +52,7 @@
     <string name="charging_control_notification_content_limit_reached">Akku ist bis %1$d%% geladen</string>
     <string name="charging_control_notification_content_target">Akku wird bis %1$s vollständig geladen sein</string>
     <string name="charging_control_notification_content_target_reached">Akku ist aufgeladen</string>
+
+    <!-- App lock -->
+    <string name="unlock_application"><xliff:g id="label" example="Telegram">%1$s</xliff:g> entsperren</string>
 </resources>
