@@ -124,4 +124,6 @@
     <string name="screenrecord_lowquality_summary">Zum Verringern der Dateigröße</string>
     <string name="screenrecord_longer_timeout_switch_label">Max. Dateigröße erhöhen</string>
     <string name="screenrecord_longer_timeout_switch_summary">Größe der Aufnahme auf 15 GB begrenzen</string>
+    <string name="screenrecord_skip_time_label">Timer überspringen</string>
+    <string name="screenrecord_skip_time_summary">Dreisekündige Wartezeit deaktivieren</string>
 </resources>
