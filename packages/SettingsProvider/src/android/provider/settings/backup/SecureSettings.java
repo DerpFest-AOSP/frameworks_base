@@ -251,6 +251,7 @@ public class SecureSettings {
         Settings.Secure.QUICK_SETTINGS_TILES_ANIM_STYLE,
         Settings.Secure.QUICK_SETTINGS_TILES_ANIM_DURATION,
         Settings.Secure.QUICK_SETTINGS_TILES_ANIM_INTERPOLATOR,
-        Settings.Secure.DOZE_SINGLE_TAP_GESTURE_AMBIENT
+        Settings.Secure.DOZE_SINGLE_TAP_GESTURE_AMBIENT,
+        Settings.Secure.IGNORE_AUTH_CONFIRMATION,
     };
 }
