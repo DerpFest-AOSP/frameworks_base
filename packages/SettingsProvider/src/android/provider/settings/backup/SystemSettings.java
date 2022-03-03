@@ -106,6 +106,7 @@ public class SystemSettings {
         Settings.System.STATUS_BAR_BATTERY_STYLE,
         Settings.System.SHOW_BATTERY_PERCENT_INSIDE,
         Settings.System.HAPTIC_ON_QS,
+        Settings.System.HAPTIC_ON_VOLUME_SLIDER,
         Settings.System.HAPTIC_ON_STATUSBAR,
         Settings.System.HAPTIC_ON_SWITCH,
         Settings.System.HAPTIC_ON_SLIDER,
