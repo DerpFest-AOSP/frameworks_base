@@ -221,6 +221,8 @@ public class KeyguardIndicationController {
 
     private KeyguardUpdateMonitorCallback mUpdateMonitorCallback;
 
+    private boolean mChargingInfoEnabled;
+
     // omni additions
     private BatteryBarView mBatteryBar;
 
@@ -330,6 +332,8 @@ public class KeyguardIndicationController {
         mFeatureFlags = flags;
         mIndicationHelper = indicationHelper;
         mKeyguardInteractor = keyguardInteractor;
+
+        mChargingInfoEnabled = mContext.getResources().getBoolean(com.android.internal.R.bool.config_enable_charging_info);
 
         mFaceAcquiredMessageDeferral = faceHelpMessageDeferral;
         mCoExFaceAcquisitionMsgIdsToShow = new HashSet<>();
@@ -1096,7 +1100,7 @@ public class KeyguardIndicationController {
         String batteryInfo = "";
         int current = 0;
         double voltage = 0;
-        boolean showBatteryInfo = Settings.System.getIntForUser(mContext.getContentResolver(),
+        boolean showBatteryInfo = mChargingInfoEnabled && Settings.System.getIntForUser(mContext.getContentResolver(),
             Settings.System.LOCKSCREEN_BATTERY_INFO, 0, UserHandle.USER_CURRENT) == 1;
         // if the threshold is not updated and the current is overflowing, skip appending battery info and update the threshold 
         if (showBatteryInfo && String.valueOf(mChargingCurrent).length() >= 6 && !mBatteryChargingCurrentNeedsThreshold) {

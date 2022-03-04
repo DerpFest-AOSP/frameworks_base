@@ -339,4 +339,7 @@
 
   <!-- Parallel space max count. Should overlay according to device performance. -->
   <integer name="config_parallelSpaceMaxCount">9</integer>
+
+  <!-- Whether to enable lockscreen charging info settings -->
+  <bool name="config_enable_charging_info">true</bool>
 </resources>
