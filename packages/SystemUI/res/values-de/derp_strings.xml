@@ -90,6 +90,9 @@
     <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
     <string name="clock">Uhr</string>
 
+    <!-- Name of the data saver status bar icon. -->
+    <string name="status_bar_data_saver">Datensparmodus</string>
+
     <!-- Label for area where tiles can be added to the qs panel -->
     <string name="drag_or_tap_to_add_tiles">Halten &amp; ziehen oder tippen zum Hinzufügen oder Entfernen</string>
 

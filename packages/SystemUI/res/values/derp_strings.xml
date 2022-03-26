@@ -143,6 +143,9 @@
     <!-- Name of the volte/vowifi status bar icon. -->
     <string name="status_bar_ims">VoLTE/VoWiFi</string>
 
+    <!-- Name of the data saver status bar icon. -->
+    <string name="status_bar_data_saver">Data saver</string>
+
     <!-- Status bar network traffic monitor strings -->
     <string name="kilobitspersecond_short" translatable="false">kb/s</string>
     <string name="megabitspersecond_short" translatable="false">Mb/s</string>
