@@ -6896,6 +6896,12 @@ public final class Settings {
         public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
         /**
+         * Whether to enable custom carrier label
+         * @hide
+         */
+        public static final String ENABLE_CUSTOM_CARRIER_LABEL = "enable_custom_carrier_label";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate

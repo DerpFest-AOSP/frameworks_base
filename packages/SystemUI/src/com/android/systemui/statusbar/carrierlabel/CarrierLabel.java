@@ -47,6 +47,8 @@ public class CarrierLabel extends TextView implements DarkReceiver {
     private Context mContext;
     private boolean mAttached;
     private static boolean isCN;
+    private static boolean isCustom;
+    private static String carrierLabel;
 
     public CarrierLabel(Context context) {
         this(context, null);
@@ -59,11 +61,14 @@ public class CarrierLabel extends TextView implements DarkReceiver {
     public CarrierLabel(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
+        updateCarrierLabel();
         updateNetworkName(true, null, false, null);
     }
 
     public ContentObserver mObserver = new ContentObserver(new Handler()) {
+        @Override
         public void onChange(boolean selfChange, Uri uri) {
+            updateCarrierLabel();
             updateNetworkName(null);
         }
     };
@@ -81,6 +86,8 @@ public class CarrierLabel extends TextView implements DarkReceiver {
         }
         mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                 Settings.System.CUSTOM_CARRIER_LABEL), false, mObserver);
+        mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                Settings.System.ENABLE_CUSTOM_CARRIER_LABEL), false, mObserver);
     }
 
     @Override
@@ -115,10 +122,8 @@ public class CarrierLabel extends TextView implements DarkReceiver {
     };
 
     public void updateNetworkName(String str) {
-        String customCarrierLabel = Settings.System.getStringForUser(mContext.getContentResolver(),
-                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
-        if (!TextUtils.isEmpty(customCarrierLabel)) {
-            setText(customCarrierLabel);
+        if (!TextUtils.isEmpty(carrierLabel) && isCustom) {
+            setText(carrierLabel);
         } else {
             setText(TextUtils.isEmpty(str) ? getOperatorName() : str);
         }
@@ -135,13 +140,18 @@ public class CarrierLabel extends TextView implements DarkReceiver {
         } else {
             str = "";
         }
-        String customCarrierLabel = Settings.System.getStringForUser(mContext.getContentResolver(),
-                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
-        if (!TextUtils.isEmpty(customCarrierLabel)) {
-            setText(customCarrierLabel);
+        if (!TextUtils.isEmpty(carrierLabel) && isCustom) {
+            setText(carrierLabel);
         } else {
             setText(TextUtils.isEmpty(str) ? getOperatorName() : str);
         }
+    }
+
+    private void updateCarrierLabel() {
+        carrierLabel = Settings.System.getStringForUser(mContext.getContentResolver(),
+                Settings.System.CUSTOM_CARRIER_LABEL, UserHandle.USER_CURRENT);
+        isCustom = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.ENABLE_CUSTOM_CARRIER_LABEL, 0, UserHandle.USER_CURRENT) == 1;
     }
 
     private String getOperatorName() {
