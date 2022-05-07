@@ -393,5 +393,6 @@ public class SecureSettingsValidators {
         VALIDATORS.put(Secure.POWER_MENU_ACTIONS, ANY_STRING_VALIDATOR);
         VALIDATORS.put(Secure.LOCKSCREEN_MEDIA_METADATA, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Secure.STATUS_BAR_CLOCK, new InclusiveIntegerRangeValidator(0, 2));
+        VALIDATORS.put(Secure.KEYBOARD_NO_NAVIGATION_BAR, BOOLEAN_VALIDATOR);
     }
 }
