@@ -342,4 +342,7 @@
 
   <!-- Whether to enable lockscreen charging info settings -->
   <bool name="config_enable_charging_info">true</bool>
+
+  <!-- Whether allow to show charging remaining time -->
+  <bool name="config_show_charging_remaining_time">true</bool>
 </resources>

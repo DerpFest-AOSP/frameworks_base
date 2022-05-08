@@ -214,4 +214,7 @@
 
     <!-- Whether to enable lockscreen charging info settings -->
     <java-symbol type="bool" name="config_enable_charging_info" />
+
+    <!-- Whether allow to show charging remaining time -->
+    <java-symbol type="bool" name="config_show_charging_remaining_time" />
 </resources>
