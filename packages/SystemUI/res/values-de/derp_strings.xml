@@ -54,6 +54,11 @@
     <string name="vpn_credentials_password">Passwort</string>
     <string name="vpn_credentials_dialog_connect">Verbinden</string>
 
+    <!-- VPN tethering QS tile -->
+    <string name="vpn_tethering_label">VPN-Tethering</string>
+    <string name="vpn_tethering_changed_off">VPN-Tethering aus.</string>
+    <string name="vpn_tethering_changed_on">VPN-Tethering an.</string>
+
     <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
     <string name="clock">Uhr</string>
 
