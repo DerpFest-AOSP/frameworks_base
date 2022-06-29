@@ -21,6 +21,9 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +59,9 @@ public class MainSwitchBar extends LinearLayout implements CompoundButton.OnChec
     private Drawable mBackgroundOff;
     private Drawable mBackgroundDisabled;
     private View mFrameView;
+
+    private Context mContext;
+    private Vibrator mVibrator;
 
     public MainSwitchBar(Context context) {
         this(context, null);
@@ -114,6 +120,9 @@ public class MainSwitchBar extends LinearLayout implements CompoundButton.OnChec
         }
 
         setBackground(mSwitch.isChecked());
+
+        mContext = context;
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -123,6 +132,13 @@ public class MainSwitchBar extends LinearLayout implements CompoundButton.OnChec
 
     @Override
     public boolean performClick() {
+        final boolean hapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
+        final boolean switchHapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                "haptic_on_switch", 1) != 0;
+        if (hapticEnabled && switchHapticEnabled) {
+            mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
+        }
         mSwitch.performClick();
         return super.performClick();
     }
