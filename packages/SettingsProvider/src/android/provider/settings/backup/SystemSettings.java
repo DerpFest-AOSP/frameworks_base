@@ -110,5 +110,6 @@ public class SystemSettings {
         Settings.System.HAPTIC_ON_STATUSBAR,
         Settings.System.HAPTIC_ON_SWITCH,
         Settings.System.HAPTIC_ON_SLIDER,
+        Settings.System.HAPTIC_ON_POWER_MENU,
     };
 }

@@ -6530,6 +6530,12 @@ public final class Settings {
         public static final String HAPTIC_ON_SLIDER = "haptic_on_slider";
 
         /**
+         * Whether do haptic feedback on power menu actions
+         * @hide
+         */
+        public static final String HAPTIC_ON_POWER_MENU = "haptic_on_power_menu";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
