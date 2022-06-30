@@ -6512,6 +6512,12 @@ public final class Settings {
         public static final String HAPTIC_ON_VOLUME_SLIDER = "haptic_on_volume_slider";
 
         /**
+         * Whether do haptic feedback on invalid volume change
+         * @hide
+         */
+        public static final String HAPTIC_ON_VOLUME_KEYS = "haptic_on_volume_keys";
+
+        /**
          * Whether do haptic feedback on clicked status bar
          * @hide
          */

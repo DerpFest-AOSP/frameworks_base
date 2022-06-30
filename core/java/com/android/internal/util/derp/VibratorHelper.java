@@ -74,8 +74,16 @@ public class VibratorHelper {
     }
 
     public VibratorHelper(Context context, boolean observe, String... settings) {
+        this(context, context.getSystemService(Vibrator.class), observe, settings);
+    }
+
+    public VibratorHelper(Context context, Vibrator vibrator, String... settings) {
+        this(context, vibrator, false, settings);
+    }
+
+    public VibratorHelper(Context context, Vibrator vibrator, boolean observe, String... settings) {
         mContext = context;
-        mVibrator = context.getSystemService(Vibrator.class);
+        mVibrator = vibrator;
 
         for (String setting : settings) {
             mSettings.add(setting);
