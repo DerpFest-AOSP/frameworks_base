@@ -132,6 +132,7 @@ public class MainSwitchBar extends LinearLayout implements CompoundButton.OnChec
 
     @Override
     public boolean performClick() {
+        final boolean ret = mSwitch.performClick();
         final boolean hapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
         final boolean switchHapticEnabled = Settings.System.getInt(mContext.getContentResolver(),
@@ -139,8 +140,7 @@ public class MainSwitchBar extends LinearLayout implements CompoundButton.OnChec
         if (hapticEnabled && switchHapticEnabled) {
             mVibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
         }
-        mSwitch.performClick();
-        return super.performClick();
+        return ret;
     }
 
     /**
