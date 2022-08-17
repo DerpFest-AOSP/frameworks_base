@@ -321,4 +321,7 @@
   -->
   <string-array name="config_oemFastChargerStatusPaths" translatable="false">
   </string-array>
+
+  <!-- Whether to cancel fingerprint operation if not idle -->
+  <bool name="config_fpCancelIfNotIdle">false</bool>
 </resources>
