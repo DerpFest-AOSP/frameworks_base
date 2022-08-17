@@ -172,4 +172,7 @@
     <!-- Title & summary of notification letting users know that battery saver is now on -->
     <java-symbol type="string" name="battery_saver_on_notification_title" />
     <java-symbol type="string" name="battery_saver_on_notification_summary" />
+
+    <!-- Whether to cancel fingerprint operation if not idle -->
+    <java-symbol type="bool" name="config_fpCancelIfNotIdle" />
 </resources>
