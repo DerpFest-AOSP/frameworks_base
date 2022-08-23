@@ -74,7 +74,7 @@ import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.util.concurrency.DelayableExecutor;
 import com.android.systemui.util.concurrency.Execution;
 import com.android.systemui.util.time.SystemClock;
-
+import com.android.systemui.R; 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
