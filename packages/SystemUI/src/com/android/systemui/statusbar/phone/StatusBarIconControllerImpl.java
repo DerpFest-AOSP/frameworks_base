@@ -124,7 +124,6 @@ public class StatusBarIconControllerImpl implements Tunable,
             }
         }
 
-        group.setController(this);
         group.setMobileSignalStyle(mIsOldSignalStyle);
         mIconGroups.add(group);
         List<Slot> allSlots = mStatusBarIconList.getSlots();
@@ -138,12 +137,6 @@ public class StatusBarIconControllerImpl implements Tunable,
                 group.onIconAdded(viewIndex, slot.getName(), hidden, holder);
             }
         }
-    }
-
-    @Override
-    public void refreshIconGroup(IconManager iconManager) {
-        removeIconGroup(iconManager);
-        addIconGroup(iconManager);
     }
 
     private void refreshIconGroups() {
