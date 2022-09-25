@@ -253,6 +253,9 @@ import com.android.internal.derp.app.ILineageGlobalActions;
 import com.android.internal.derp.hardware.LiveDisplayManager;
 import com.android.internal.derp.hardware.ILiveDisplayService;
 
+import com.oplus.os.ILinearmotorVibratorService;
+import com.oplus.os.LinearmotorVibrator;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -1002,6 +1005,15 @@ public final class SystemServiceRegistry {
                 IBinder binder = ServiceManager.getService(Context.POCKET_SERVICE);
                 IPocketService service = IPocketService.Stub.asInterface(binder);
                 return new PocketManager(ctx.getOuterContext(), service);
+            }});
+
+        registerService(Context.LINEARMOTOR_VIBRATOR_SERVICE, LinearmotorVibrator.class,
+                new CachedServiceFetcher<LinearmotorVibrator>() {
+            @Override
+            public LinearmotorVibrator createService(ContextImpl ctx) {
+                IBinder binder = ServiceManager.getService(Context.LINEARMOTOR_VIBRATOR_SERVICE);
+                ILinearmotorVibratorService service = ILinearmotorVibratorService.Stub.asInterface(binder);
+                return new LinearmotorVibrator(ctx.getOuterContext(), service);
             }});
 
         registerService(Context.TV_INPUT_SERVICE, TvInputManager.class,
