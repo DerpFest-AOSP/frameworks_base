@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.util.Slog;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
@@ -101,6 +102,10 @@ public class LockoutFrameworkImpl implements LockoutTracker {
     }
 
     void addFailedAttemptForUser(int userId) {
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FINGERPRINT_LOCKOUT, 0) == 1) {
+            return;
+        }
         mFailedAttempts.put(userId, mFailedAttempts.get(userId, 0) + 1);
         mTimedLockoutCleared.put(userId, false);
 
@@ -111,6 +116,10 @@ public class LockoutFrameworkImpl implements LockoutTracker {
 
     @Override
     public @LockoutMode int getLockoutModeForUser(int userId) {
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FINGERPRINT_LOCKOUT, 0) == 1) {
+            return LOCKOUT_NONE;
+        }
         final int failedAttempts = mFailedAttempts.get(userId, 0);
         if (failedAttempts >= MAX_FAILED_ATTEMPTS_LOCKOUT_PERMANENT) {
             return LOCKOUT_PERMANENT;
