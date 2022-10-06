@@ -73,7 +73,7 @@ public class ScreenMediaRecorder extends MediaProjection.Callback {
     private static final int VIDEO_FRAME_RATE = 30;
     private static final int VIDEO_FRAME_RATE_TO_RESOLUTION_RATIO = 6;
     private static final int LOW_VIDEO_FRAME_RATE_TO_RESOLUTION_RATIO = 2;
-    private static final int LOW_FRAME_RATE = 25;
+    private static final int LOW_VIDEO_FRAME_RATE = 25;
     private static final int AUDIO_BIT_RATE = 196000;
     private static final int AUDIO_SAMPLE_RATE = 44100;
     private static final int MAX_DURATION_MS = 60 * 60 * 1000;
@@ -99,6 +99,7 @@ public class ScreenMediaRecorder extends MediaProjection.Callback {
 
     private boolean mLowQuality;
     private boolean mLongerDuration;
+    private boolean mHEVC;
 
     private Context mContext;
     ScreenMediaRecorderListener mListener;
@@ -125,6 +126,10 @@ public class ScreenMediaRecorder extends MediaProjection.Callback {
 
     public void setLongerDuration(boolean longer) {
         mLongerDuration = longer;
+    }
+
+    public void setHEVC(boolean hevc) {
+        mHEVC = hevc;
     }
 
     private void prepare() throws IOException, RemoteException, RuntimeException {
@@ -162,8 +167,8 @@ public class ScreenMediaRecorder extends MediaProjection.Callback {
         DisplayMetrics metrics = new DisplayMetrics();
         WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getRealMetrics(metrics);
-        int refreshRate = mLowQuality ? LOW_FRAME_RATE
-                : (int) wm.getDefaultDisplay().getRefreshRate();
+        int refreshRate = mLowQuality ? LOW_VIDEO_FRAME_RATE :
+                (int) wm.getDefaultDisplay().getRefreshRate();
         if (mMaxRefreshRate != 0 && refreshRate > mMaxRefreshRate) refreshRate = mMaxRefreshRate;
         int[] dimens = getSupportedSize(metrics.widthPixels, metrics.heightPixels, refreshRate);
         int width = dimens[0];
@@ -173,13 +178,19 @@ public class ScreenMediaRecorder extends MediaProjection.Callback {
                 : VIDEO_FRAME_RATE_TO_RESOLUTION_RATIO;
         int vidBitRate = width * height * refreshRate / VIDEO_FRAME_RATE * resRatio;
         long maxFilesize = mLongerDuration ? MAX_FILESIZE_BYTES_LONGER : MAX_FILESIZE_BYTES;
-        /* PS: HEVC can be set too, to reduce file size without quality loss (h265 is more efficient than h264),
-        but at the same time the cpu load is 8-10 times higher and some devices don't support it yet */
-        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
-        mMediaRecorder.setVideoEncodingProfileLevel(
-                MediaCodecInfo.CodecProfileLevel.AVCProfileMain,
-                mLowQuality ? MediaCodecInfo.CodecProfileLevel.AVCLevel32/*level 3.2*/
-                : getAvcProfileLevelCodeByName(mAvcProfileLevel));
+        if (!mHEVC) {
+            mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+            mMediaRecorder.setVideoEncodingProfileLevel(
+                    MediaCodecInfo.CodecProfileLevel.AVCProfileMain,
+                    mLowQuality ? MediaCodecInfo.CodecProfileLevel.AVCLevel32
+                    : getAvcProfileLevelCodeByName(mAvcProfileLevel));
+        } else {
+            mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.HEVC);
+            mMediaRecorder.setVideoEncodingProfileLevel(
+                    MediaCodecInfo.CodecProfileLevel.HEVCProfileMain,
+                    mLowQuality ? MediaCodecInfo.CodecProfileLevel.HEVCHighTierLevel31
+                    : MediaCodecInfo.CodecProfileLevel.HEVCHighTierLevel41);
+        }
         mMediaRecorder.setVideoSize(width, height);
         mMediaRecorder.setVideoFrameRate(refreshRate);
         mMediaRecorder.setVideoEncodingBitRate(vidBitRate);
