@@ -124,6 +124,8 @@ android_library {
         "lottie",
         "bcsmartspace-google",
         "vendor.lineage.powershare-V1.0-java",
+        "colorkt",
+        "themelib",
     ],
     manifest: "AndroidManifest.xml",
 
