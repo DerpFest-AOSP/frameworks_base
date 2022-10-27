@@ -128,4 +128,9 @@
     <string name="screenrecord_skip_time_summary">Dreisekündige Wartezeit deaktivieren</string>
     <string name="screenrecord_hevc_switch_label">HEVC aktivieren</string>
     <string name="screenrecord_hevc_switch_summary">HEVC als Videocodec verwenden (effizienter)</string>
+
+    <!-- Bluetooth dialog -->
+    <string name="turn_on_bluetooth">Bluetooth einschalten</string>
+    <string name="bluetooth_is_off">Bluetooth ist deaktiviert</string>
+    <string name="tap_a_device_to_connect">Tippen, um ein Gerät zu verbinden oder zu trennen</string>
 </resources>
