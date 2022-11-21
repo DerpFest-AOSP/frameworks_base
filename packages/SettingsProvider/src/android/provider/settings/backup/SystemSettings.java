@@ -114,5 +114,7 @@ public class SystemSettings {
         Settings.System.HAPTIC_ON_POWER_MENU,
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
+        Settings.System.NOTIFICATION_VIBRATION_PATTERN,
+        Settings.System.CUSTOM_NOTIFICATION_VIBRATION_PATTERN,
     };
 }
