@@ -327,11 +327,16 @@ public class DozeTriggers implements DozeMachine.Part {
                     mDozeHost.onSlpiTap(screenX, screenY);
                     gentleWakeUp(pulseReason);
                 } else if (isPickup) {
+                    final State state = mMachine.getState();
                     if (shouldDropPickupEvent())  {
                         mDozeLog.traceSensorEventDropped(pulseReason, "keyguard occluded");
                         return;
                     }
-                    gentleWakeUp(pulseReason);
+                    if (state == State.DOZE_AOD) {
+                        gentleWakeUp(pulseReason);
+                    } else {
+                        requestPulse(pulseReason, true, null);
+                    }
                 } else if (isUdfpsLongPress) {
                     if (canPulse(mMachine.getState(), true)) {
                         mDozeLog.d("updfsLongPress - setting aodInterruptRunnable to run when "
