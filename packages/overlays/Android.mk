@@ -93,6 +93,7 @@ LOCAL_REQUIRED_MODULES := \
 	TransparentNavigationBarOverlay \
 	NotesRoleEnabledOverlay \
 	NoCutoutOverlay \
+    VShapedNotch \
 	NotchBarKillerLeftrOverlay \
 	NotchBarKillerOverlay \
 	preinstalled-packages-platform-overlays.xml
