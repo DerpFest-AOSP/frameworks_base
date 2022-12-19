@@ -65,6 +65,7 @@ import com.android.systemui.qs.tiles.ReduceBrightColorsTile;
 import com.android.systemui.qs.tiles.RefreshRateTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenRecordTile;
+import com.android.systemui.qs.tiles.ScreenshotTile;
 import com.android.systemui.qs.tiles.SleepModeTile;
 import com.android.systemui.qs.tiles.SoundSearchTile;
 import com.android.systemui.qs.tiles.SoundTile;
@@ -139,6 +140,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<DerpSpaceTile> mDerpSpaceTileProvider;
     private final Provider<SleepModeTile> mSleepModeTileProvider;
     private final Provider<PreferredNetworkTile> mPreferredNetworkTileProvider;
+    private final Provider<ScreenshotTile> mScreenshotTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
     private final Provider<CustomTile.Builder> mCustomTileBuilderProvider;
@@ -196,7 +198,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<VolumeTile> volumeTileProvider,
             Provider<DerpSpaceTile> derpSpaceTileProvider,
             Provider<SleepModeTile> sleepModeTileProvider,
-            Provider<PreferredNetworkTile> preferredNetworkTileProvider) {
+            Provider<PreferredNetworkTile> preferredNetworkTileProvider,
+            Provider<ScreenshotTile> screenshotTileProvider) {
         mQsHostLazy = qsHostLazy;
         mCustomTileBuilderProvider = customTileBuilderProvider;
 
@@ -250,6 +253,7 @@ public class QSFactoryImpl implements QSFactory {
         mDerpSpaceTileProvider = derpSpaceTileProvider;
         mSleepModeTileProvider = sleepModeTileProvider;
         mPreferredNetworkTileProvider = preferredNetworkTileProvider;
+        mScreenshotTileProvider = screenshotTileProvider;
     }
 
     /** Creates a tile with a type based on {@code tileSpec} */
@@ -366,6 +370,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mSleepModeTileProvider.get();
             case "preferred_network":
                 return mPreferredNetworkTileProvider.get();
+            case "screenshot":
+                return mScreenshotTileProvider.get();
         }
 
         // Custom tiles

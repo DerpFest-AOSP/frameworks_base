@@ -223,4 +223,7 @@
     <!-- QS customizer -->
     <string name="reset_customizer">Reihenfolge zurücksetzen</string>
 
+    <!-- Screenshot Tile -->
+    <string name="screenshot_long_press">Lang drücken - ausgewählter Bereich</string>
+
 </resources>

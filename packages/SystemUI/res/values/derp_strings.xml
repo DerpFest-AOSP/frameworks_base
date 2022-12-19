@@ -246,4 +246,7 @@
     <!-- QS customizer -->
     <string name="reset_customizer">Reset order</string>
 
+    <!-- Screenshot Tile -->
+    <string name="screenshot_long_press">Long press - selected region</string>
+
 </resources>
