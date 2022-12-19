@@ -157,4 +157,7 @@
     <string name="turn_on_bluetooth">Bluetooth einschalten</string>
     <string name="bluetooth_is_off">Bluetooth ist deaktiviert</string>
     <string name="tap_a_device_to_connect">Gerät zum Verbinden / Trennen antippen</string>
+
+    <!-- Screenshot Tile -->
+    <string name="screenshot_long_press">Gedrückt halten - ausgewählter Bereich</string>
 </resources>
