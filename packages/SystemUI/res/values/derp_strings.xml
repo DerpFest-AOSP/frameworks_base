@@ -197,4 +197,7 @@
 
     <!-- Bouncer user switcher -->
     <string name="restarting_systemui_msg">Restarting SystemUI due to settings change..</string>
+
+    <!-- Screenshot Tile -->
+    <string name="screenshot_long_press">Long press - selected region</string>
 </resources>
