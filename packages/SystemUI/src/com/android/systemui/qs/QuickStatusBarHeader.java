@@ -105,7 +105,6 @@ public class QuickStatusBarHeader extends FrameLayout implements
     private StatusBarContentInsetsProvider mInsetsProvider;
 
     private int mRoundedCornerPadding = 0;
-    private int mStatusBarPaddingTop;
     private int mWaterfallTopInset;
     private int mCutOutPaddingLeft;
     private int mCutOutPaddingRight;
@@ -278,9 +277,6 @@ public class QuickStatusBarHeader extends FrameLayout implements
                 R.dimen.rounded_corner_content_padding);
 
         int statusBarHeight = SystemBarUtils.getStatusBarHeight(mContext);
-
-        mStatusBarPaddingTop = resources.getDimensionPixelSize(
-                R.dimen.status_bar_padding_top);
 
         mDatePrivacyView.getLayoutParams().height = statusBarHeight;
         mDatePrivacyView.setLayoutParams(mDatePrivacyView.getLayoutParams());
@@ -489,8 +485,16 @@ public class QuickStatusBarHeader extends FrameLayout implements
                 .getStatusBarContentInsetsForCurrentRotation();
         boolean hasCornerCutout = mInsetsProvider.currentRotationHasCornerCutout();
 
-        mDatePrivacyView.setPadding(sbInsets.first, 0, sbInsets.second, 0);
-        mStatusIconsView.setPadding(sbInsets.first, 0, sbInsets.second, 0);
+        mDatePrivacyView.setPadding(
+                sbInsets.first,
+                mDatePrivacyView.getPaddingTop(),
+                sbInsets.second,
+                mDatePrivacyView.getPaddingBottom());
+        mStatusIconsView.setPadding(
+                sbInsets.first,
+                mStatusIconsView.getPaddingTop(),
+                sbInsets.second,
+                mStatusIconsView.getPaddingBottom());
         LinearLayout.LayoutParams datePrivacySeparatorLayoutParams =
                 (LinearLayout.LayoutParams) mDatePrivacySeparator.getLayoutParams();
         LinearLayout.LayoutParams mClockIconsSeparatorLayoutParams =
@@ -561,26 +565,33 @@ public class QuickStatusBarHeader extends FrameLayout implements
         int leftMargin = lp.leftMargin;
         int rightMargin = lp.rightMargin;
 
+        int statusBarPaddingTop = getResources().getDimensionPixelSize(
+                R.dimen.status_bar_padding_top);
+        int statusBarPaddingStart = getResources().getDimensionPixelSize(
+                R.dimen.status_bar_padding_start);
+        int statusBarPaddingEnd = getResources().getDimensionPixelSize(
+                R.dimen.status_bar_padding_end);
+
         // The clock might collide with cutouts, let's shift it out of the way.
         // We only do that if the inset is bigger than our own padding, since it's nicer to
         // align with
         if (mCutOutPaddingLeft > 0) {
             // if there's a cutout, let's use at least the rounded corner inset
             int cutoutPadding = Math.max(mCutOutPaddingLeft, mRoundedCornerPadding);
-            paddingLeft = Math.max(cutoutPadding - leftMargin, 0);
+            paddingLeft = Math.max(cutoutPadding - leftMargin, statusBarPaddingStart);
         }
         if (mCutOutPaddingRight > 0) {
             // if there's a cutout, let's use at least the rounded corner inset
             int cutoutPadding = Math.max(mCutOutPaddingRight, mRoundedCornerPadding);
-            paddingRight = Math.max(cutoutPadding - rightMargin, 0);
+            paddingRight = Math.max(cutoutPadding - rightMargin, statusBarPaddingEnd);
         }
 
         mDatePrivacyView.setPadding(paddingLeft,
-                mStatusBarPaddingTop,
+                statusBarPaddingTop,
                 paddingRight,
                 0);
         mStatusIconsView.setPadding(paddingLeft,
-                mStatusBarPaddingTop,
+                statusBarPaddingTop,
                 paddingRight,
                 0);
     }
