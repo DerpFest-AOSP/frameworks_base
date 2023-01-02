@@ -35,6 +35,7 @@ import com.android.systemui.qs.tiles.AlarmTile;
 import com.android.systemui.qs.tiles.AmbientDisplayTile;
 import com.android.systemui.qs.tiles.AODTile;
 import com.android.systemui.qs.tiles.BatterySaverTile;
+import com.android.systemui.qs.tiles.BluetoothStockTile;
 import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CaffeineTile;
 import com.android.systemui.qs.tiles.CameraToggleTile;
@@ -93,6 +94,7 @@ public class QSFactoryImpl implements QSFactory {
 
     private final Provider<WifiTile> mWifiTileProvider;
     private final Provider<InternetTile> mInternetTileProvider;
+    private final Provider<BluetoothStockTile> mBluetoothStockTileProvider;
     private final Provider<BluetoothTile> mBluetoothTileProvider;
     private final Provider<CellularTile> mCellularTileProvider;
     private final Provider<DndTile> mDndTileProvider;
@@ -153,6 +155,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CustomTile.Builder> customTileBuilderProvider,
             Provider<WifiTile> wifiTileProvider,
             Provider<InternetTile> internetTileProvider,
+            Provider<BluetoothStockTile> bluetoothStockTileProvider,
             Provider<BluetoothTile> bluetoothTileProvider,
             Provider<CellularTile> cellularTileProvider,
             Provider<DndTile> dndTileProvider,
@@ -208,6 +211,7 @@ public class QSFactoryImpl implements QSFactory {
 
         mWifiTileProvider = wifiTileProvider;
         mInternetTileProvider = internetTileProvider;
+        mBluetoothStockTileProvider = bluetoothStockTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
         mDndTileProvider = dndTileProvider;
@@ -279,6 +283,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mWifiTileProvider.get();
             case "internet":
                 return mInternetTileProvider.get();
+            case "btstock":
+                return mBluetoothStockTileProvider.get();
             case "bt":
                 return mBluetoothTileProvider.get();
             case "cell":
