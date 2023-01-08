@@ -981,10 +981,14 @@ public class KeyguardIndicationController {
                 mTopIndicationView.setTextColor(Color.WHITE);
 
                 CharSequence newIndication = null;
+                boolean setWakelock = false;
+
                 if (!TextUtils.isEmpty(mBiometricMessage)) {
                     newIndication = mBiometricMessage;
+                    setWakelock = true;
                 } else if (!TextUtils.isEmpty(mTransientIndication)) {
                     newIndication = mTransientIndication;
+                    setWakelock = true;
                 } else if (!mBatteryPresent) {
                     // If there is no battery detected, hide the indication and bail
                     mIndicationArea.setVisibility(GONE);
@@ -993,8 +997,10 @@ public class KeyguardIndicationController {
                     useMisalignmentColor = true;
                     newIndication = mAlignmentIndication;
                     mTopIndicationView.setTextColor(mContext.getColor(R.color.misalignment_text_color));
+                    setWakelock = false;
                 } else if (mPowerPluggedIn || mEnableBatteryDefender) {
                     newIndication = computePowerIndication();
+                    setWakelock = animate;
                     if (showBatteryBar || showBatteryBarAlways) {
                         mBatteryBar.setVisibility(View.VISIBLE);
                         mBatteryBar.setBatteryPercent(mBatteryLevel);
@@ -1009,6 +1015,7 @@ public class KeyguardIndicationController {
                 } else {
                     newIndication = NumberFormat.getPercentInstance()
                             .format(mBatteryLevel / 100f);
+                    setWakelock = false;
                     if (showBatteryBarAlways) {
                         mBatteryBar.setVisibility(View.VISIBLE);
                         mBatteryBar.setBatteryPercent(mBatteryLevel);
@@ -1026,20 +1033,31 @@ public class KeyguardIndicationController {
                     }
                 }
 
-                if (!TextUtils.equals(mTopIndicationView.getText(), newIndication)) {
+            if (!TextUtils.equals(mTopIndicationView.getText(), newIndication)) {
+                if (setWakelock) {
                     mWakeLock.setAcquired(true);
                     mTopIndicationView.switchIndication(newIndication,
-                            new KeyguardIndication.Builder()
-                                    .setMessage(newIndication)
-                                    .setTextColor(ColorStateList.valueOf(
-                                            useMisalignmentColor
-                                                    ? mContext.getColor(R.color.misalignment_text_color)
-                                                    : Color.WHITE))
-                                .    build(),
-                            animate, () -> mWakeLock.setAcquired(false));
+                        new KeyguardIndication.Builder()
+                                .setMessage(newIndication)
+                                .setTextColor(ColorStateList.valueOf(
+                                        useMisalignmentColor
+                                                ? mContext.getColor(R.color.misalignment_text_color)
+                                                : Color.WHITE))
+                                .build(),
+                        animate, () -> mWakeLock.setAcquired(false));
+                } else {
+                    mTopIndicationView.switchIndication(newIndication,
+                        new KeyguardIndication.Builder()
+                                .setMessage(newIndication)
+                                .setTextColor(ColorStateList.valueOf(
+                                        useMisalignmentColor
+                                                ? mContext.getColor(R.color.misalignment_text_color)
+                                                : Color.WHITE))
+                                .build(), animate, null /* onAnimationEndCallback */);
                 }
-                return;
             }
+            return;
+        }
 
             // LOCK SCREEN
             mTopIndicationView.setVisibility(GONE);
