@@ -6666,6 +6666,17 @@ public final class Settings {
         public static final String QS_TRANSPARENCY = "qs_transparency";
 
         /**
+         * Bottom screen shortcuts on keyguard
+         * Two lists of strings delimeted by ;
+         * Each list of string is delimited by ,
+         * Valid strings are: home, wallet, qr, camera, flashlight and none
+         * The order in each list decides the priority for each shortcut
+         * @hide
+         */
+        @Readable
+        public static final String KEYGUARD_QUICK_TOGGLES = "keyguard_quick_toggles";
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
