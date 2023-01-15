@@ -83,6 +83,7 @@
     <string name="global_action_current_user">Aktuell</string>
     <string name="global_action_users">Benutzer</string>
     <string name="global_action_panic">Panikauslöser</string>
+    <string name="global_action_restart_systemui">System-UI</string>
 
     <!-- Navigation bar dpad -->
     <string name="accessibility_dpad_left">Cursor links</string>
