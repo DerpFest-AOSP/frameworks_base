@@ -1605,8 +1605,6 @@ public class SmsMessage extends SmsMessageBase {
         } else {
             switch (mDataCodingScheme & 0x3) {
             case 0:
-                messageClass = MessageClass.CLASS_0;
-                break;
             case 1:
                 messageClass = MessageClass.CLASS_1;
                 break;
