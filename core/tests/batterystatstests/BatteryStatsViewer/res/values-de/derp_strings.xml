@@ -6,4 +6,5 @@
 <resources>
     <string name="app_name">Batteriestatistik-Viewer</string>
     <string name="header">Batteriestatistik</string>
+    <string name="display_dashboard_summary">Detaillierte Statistiken zum Batterieverbrauch anzeigen</string>
 </resources>
