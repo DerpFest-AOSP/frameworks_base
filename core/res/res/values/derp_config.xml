@@ -359,4 +359,7 @@
 
   <!-- Whether or not we should show vendor mismatch message -->
   <bool name="config_show_vendor_mismatch_message">false</bool>
+
+  <!-- Display color inversion availability -->
+  <bool name="config_displayInversionAvailable">true</bool>
 </resources>
