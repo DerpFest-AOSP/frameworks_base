@@ -51,6 +51,7 @@ import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.InternetTile;
+import com.android.systemui.qs.tiles.LocaleTile;
 import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.MicrophoneToggleTile;
 import com.android.systemui.qs.tiles.NfcTile;
@@ -141,6 +142,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<SleepModeTile> mSleepModeTileProvider;
     private final Provider<PreferredNetworkTile> mPreferredNetworkTileProvider;
     private final Provider<ScreenshotTile> mScreenshotTileProvider;
+    private final Provider<LocaleTile> mLocaleTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
     private final Provider<CustomTile.Builder> mCustomTileBuilderProvider;
@@ -199,7 +201,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<DerpSpaceTile> derpSpaceTileProvider,
             Provider<SleepModeTile> sleepModeTileProvider,
             Provider<PreferredNetworkTile> preferredNetworkTileProvider,
-            Provider<ScreenshotTile> screenshotTileProvider) {
+            Provider<ScreenshotTile> screenshotTileProvider,
+            Provider<LocaleTile> localeTileProvider) {
         mQsHostLazy = qsHostLazy;
         mCustomTileBuilderProvider = customTileBuilderProvider;
 
@@ -254,6 +257,7 @@ public class QSFactoryImpl implements QSFactory {
         mSleepModeTileProvider = sleepModeTileProvider;
         mPreferredNetworkTileProvider = preferredNetworkTileProvider;
         mScreenshotTileProvider = screenshotTileProvider;
+        mLocaleTileProvider = localeTileProvider;
     }
 
     /** Creates a tile with a type based on {@code tileSpec} */
@@ -372,6 +376,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mPreferredNetworkTileProvider.get();
             case "screenshot":
                 return mScreenshotTileProvider.get();
+            case "locale":
+                return mLocaleTileProvider.get();
         }
 
         // Custom tiles
