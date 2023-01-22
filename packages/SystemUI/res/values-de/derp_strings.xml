@@ -177,4 +177,8 @@
     <!-- SoundSearch Tile -->
     <string name="quick_settings_sound_search">Sound Search</string>
     <string name="quick_settings_sound_search_no_app">Das funktioniert leider nur, wenn eine Musikerkennungs‐App installiert ist.</string>
+
+    <!-- Language toggle tile -->
+    <string name="quick_settings_locale_label">Sprache</string>
+    <string name="quick_settings_locale_more_locales_toast">Bitte mehr als eine Sprache einrichten</string>
 </resources>
