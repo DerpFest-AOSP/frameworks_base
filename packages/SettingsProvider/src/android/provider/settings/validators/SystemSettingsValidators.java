@@ -255,5 +255,6 @@ public class SystemSettingsValidators {
                 });
         VALIDATORS.put(System.DISABLE_RIPPLE_EFFECT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.LOCK_HIDE_STATUS_BAR, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.KEYGUARD_QUICK_TOGGLES_NEW, ANY_STRING_VALIDATOR);
     }
 }

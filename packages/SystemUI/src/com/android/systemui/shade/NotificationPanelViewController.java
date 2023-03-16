@@ -4969,7 +4969,7 @@ public final class NotificationPanelViewController implements Dumpable {
                 mSettingsChangeObserver
         );
         mContentResolver.registerContentObserver(
-                Settings.System.getUriFor(Settings.System.KEYGUARD_QUICK_TOGGLES),
+                Settings.System.getUriFor(Settings.System.KEYGUARD_QUICK_TOGGLES_NEW),
                 /* notifyForDescendants */ false,
                 mSettingsChangeObserver
         );
@@ -5844,7 +5844,7 @@ public final class NotificationPanelViewController implements Dumpable {
             debugLog("onSettingsChanged");
 
             if (uri.getLastPathSegment().equals(
-                    Settings.System.KEYGUARD_QUICK_TOGGLES)) {
+                    Settings.System.KEYGUARD_QUICK_TOGGLES_NEW)) {
                 mKeyguardBottomAreaViewModel.updateSettings();
             }
 
