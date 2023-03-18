@@ -304,8 +304,7 @@ public class QuickStatusBarHeader extends FrameLayout implements
                 mTintedIconManager.setTint(textColor);
             }
             if (mBatteryRemainingIcon.getBatteryStyle() == BATTERY_STYLE_CIRCLE) {
-                textColorSecondary = Utils.getColorAttrDefaultColor(mContext,
-                        android.R.attr.textColorHint);
+                textColorSecondary = reduceColorAlpha(textColor, 0.3f);
             }
             mBatteryRemainingIcon.updateColors(mTextColorPrimary, textColorSecondary,
                     mTextColorPrimary);
@@ -328,6 +327,14 @@ public class QuickStatusBarHeader extends FrameLayout implements
         updateAnimators();
 
         updateClockDatePadding();
+    }
+
+    private static int reduceColorAlpha(int color, float factor) {
+        final int a = Math.round(Color.alpha(color) * factor);
+        final int r = Color.red(color);
+        final int g = Color.green(color);
+        final int b = Color.blue(color);
+        return Color.argb(a, r, g, b);
     }
 
     private void updateClockDatePadding() {
