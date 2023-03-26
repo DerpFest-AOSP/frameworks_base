@@ -106,8 +106,8 @@
     <string name="status_bar_vowifi">WLAN-Telefonie (VoWiFi)</string>
 
     <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
-    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
-        <item quantity="one">%d Gerät verbunden</item>
-        <item quantity="other">%d Geräte verbunden</item>
-    </plurals>
+     <string name="quick_settings_internet_hotspot_summary_num_devices">{count, plural,
+        =1 {# Gerät verbunden}
+        other {# Geräte verbunden}
+    }</string>
 </resources>
