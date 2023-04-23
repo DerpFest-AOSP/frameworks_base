@@ -6704,6 +6704,11 @@ public final class Settings {
         public static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
 
         /**
+         * @hide
+         */
+        public static final String TRANSISTENT_TASK_MODE = "transistent_task_mode";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
@@ -6844,6 +6849,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_HIDE_STATUS_BAR);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(AMBIENT_WAKE_GESTURES);
+            PRIVATE_SETTINGS.add(TRANSISTENT_TASK_MODE);
         }
 
         /**
@@ -6858,6 +6864,7 @@ public final class Settings {
             CLONE_TO_MANAGED_PROFILE.add(SOUND_EFFECTS_ENABLED);
             CLONE_TO_MANAGED_PROFILE.add(TEXT_SHOW_PASSWORD);
             CLONE_TO_MANAGED_PROFILE.add(TIME_12_24);
+            CLONE_TO_MANAGED_PROFILE.add(TRANSISTENT_TASK_MODE);
         }
 
         /** @hide */
