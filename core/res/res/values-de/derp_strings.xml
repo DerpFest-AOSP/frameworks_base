@@ -43,4 +43,13 @@
     <string name="aerr_copy">URL für das Absturzprotokoll kopieren</string>
     <string name="url_copy_success">URL erfolgreich kopiert</string>
     <string name="url_copy_failed">Beim Hochladen des Protokolls zu Memochō ist ein Fehler aufgetreten</string>
+
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">Ladekontrolle</string>
+    <string name="charging_control_notification_title">Ladekontrolle</string>
+    <string name="charging_control_notification_cancel_once">Abbrechen</string>
+    <string name="charging_control_notification_content_limit">Akku wird bis %1$d%% geladen</string>
+    <string name="charging_control_notification_content_limit_reached">Akku ist bis %1$d%% geladen</string>
+    <string name="charging_control_notification_content_target">Akku wird bis %1$s vollständig geladen sein</string>
+    <string name="charging_control_notification_content_target_reached">Akku ist aufgeladen</string>
 </resources>
