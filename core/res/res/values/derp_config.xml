@@ -362,4 +362,7 @@
 
   <!-- Default value for QS_TRANSPARENCY -->
   <integer name="config_qs_transparency">85</integer>
+
+  <!-- Whether to force enable multi resolution configuration for camera -->
+    <bool name="config_forceMultiResolution">false</bool>
 </resources>
