@@ -194,4 +194,7 @@
 
     <!-- Label for UI element which allows to use lens on screenshot [CHAR LIMIT=30] -->
     <string name="screenshot_lens_label">Lens</string>
+
+    <!-- Bouncer user switcher -->
+    <string name="restarting_systemui_msg">Restarting SystemUI due to settings change..</string>
 </resources>
