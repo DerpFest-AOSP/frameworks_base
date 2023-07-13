@@ -72,6 +72,7 @@ public class PixelPropsUtils {
     private static final String[] packagesToKeep = {
             "com.google.android.apps.dreamlinerupdater",
             "com.google.android.apps.dreamliner",
+            "com.google.android.apps.miphone.aiai.AiaiApplication",
             "com.google.android.apps.motionsense.bridge",
             "com.google.android.apps.nexuslauncher",
             "com.google.android.apps.pixelmigrate",
