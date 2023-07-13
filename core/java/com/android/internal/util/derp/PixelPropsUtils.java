@@ -74,6 +74,7 @@ public class PixelPropsUtils {
 
     // Packages to Keep with original device
     private static final String[] packagesToKeep = {
+            "com.google.android.apps.miphone.aiai.AiaiApplication",
             "com.google.android.MTCL83",
             "com.google.android.UltraCVM",
             "com.google.android.apps.cameralite",
