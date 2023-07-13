@@ -72,6 +72,7 @@ public class PixelPropsUtils {
 
     // Packages to Keep with original device
     private static final String[] packagesToKeep = {
+            "com.google.android.apps.miphone.aiai.AiaiApplication",
             "com.google.android.apps.motionsense.bridge",
             "com.google.android.apps.nexuslauncher",
             "com.google.android.apps.pixelmigrate",
