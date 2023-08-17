@@ -1,152 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 DerpFest
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
+<!--
+     Copyright (C) 2023 DerpFest
+     SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Label for area where tiles can be added to the qs panel -->
-    <string name="drag_or_tap_to_add_tiles">Что бы добавить элементы, перетащите их</string>
-
-    <!-- Advance location quick setting tile -->
-    <string name="quick_settings_secondary_location_off"></string>
-    <string name="quick_settings_location_secondary_battery_saving">Энергосберегающий</string>
-    <string name="accessibility_quick_settings_location_battery_saving">Отчет о местоположении: режим экономии заряда батареи.</string>
-    <string name="quick_settings_location_secondary_gps_only">Только датчики</string>
-    <string name="accessibility_quick_settings_location_gps_only">Отчет о местоположении: режим только датчиков.</string>
-    <string name="quick_settings_location_secondary_high_accuracy">Высокая точность</string>
-    <string name="accessibility_quick_settings_location_high_accuracy">Отчет о местоположении: режим высокой точности.</string>
-
+    <!-- Custom QS tiles -->
     <!-- Ambient display QS tile -->
-    <string name="quick_settings_ambient_display_label">Ambient display</string>
-    <string name="accessibility_quick_settings_ambient_display_off">Ambient display выключен.</string>
-    <string name="accessibility_quick_settings_ambient_display_on">Ambient display включен.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display выключен.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient display включен.</string>
+    <string name="quick_settings_ambient_display_label">Индикация событий</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Индикация событий экраном выкл.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Индикация событий экраном вкл.</string>
+
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">Всегда включенный экран</string>
+    <string name="quick_settings_aod_on_charge_label">Всегда включенный экран при зарядке</string>
+    <string name="quick_settings_aod_off_label">Всегда включенный экран выкл</string>
+
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Запрет сна</string>
+    <string name="accessibility_quick_settings_caffeine_off">Запрет сна выкл.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Запрет сна вкл.</string>
+
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Всплывающие уведомления</string>
+    <string name="accessibility_quick_settings_heads_up_off">Всплывающие уведомления выкл.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Всплывающие уведомления вкл.</string>
+
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">Беспроводная зарядка</string>
+    <string name="quick_settings_powershare_enabled_label">Беспроводная зарядка включена</string>
+
+    <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">Режим чтения</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Режим чтения вкл.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Режим чтения выкл.</string>
+
+    <!-- SoundSearch Tile -->
+    <string name="quick_settings_sound_search">Поиск музыки</string>
+    <string name="quick_settings_sound_search_no_app">Извините, но это не работает без приложения для поиска музыки.</string>
+
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">Синхронизация</string>
+    <string name="accessibility_quick_settings_sync_off">Синхронизация выкл.</string>
+    <string name="accessibility_quick_settings_sync_on">Синхронизация вкл.</string>
 
     <!-- USB tethering QS tile -->
     <string name="quick_settings_usb_tether_label">USB-модем</string>
 
-     <!-- Sync QS Tile -->
-    <string name="quick_settings_sync_label">Синхронизация</string>
-    <string name="accessibility_quick_settings_sync_off">Синхронизация выключена</string>
-    <string name="accessibility_quick_settings_sync_on">Сигхронизация включена</string>
-    <string name="accessibility_quick_settings_sync_changed_off">Синхронизация выключена</string>
-    <string name="accessibility_quick_settings_sync_changed_on">Синхронизация включена</string>
-
-    <!-- Sound QS Tile -->
-    <string name="quick_settings_sound_label">Звук</string>
-    <string name="quick_settings_sound_ring">Нормальный</string>
-    <string name="quick_settings_sound_vibrate">Вибрация</string>
-    <string name="quick_settings_sound_mute">Без звука</string>
-
-    <!-- Heads Up QS Tile -->
-    <string name="quick_settings_heads_up_label">Всплывающие уведомления</string>
-    <string name="accessibility_quick_settings_heads_up_off">Всплывающие уведомления выключены</string>
-    <string name="accessibility_quick_settings_heads_up_on">Всплывающие уведомления включены</string>
-    <string name="accessibility_quick_settings_heads_up_changed_off">Всплывающие уведомления выключены</string>
-    <string name="accessibility_quick_settings_heads_up_changed_on">Всплывающие уведомления включены</string>
-
-    <string name="status_bar_vpn">VPN</string>
-    <string name="status_bar_camera">Камера</string>
-    <string name="status_bar_location">Местоположение</string>
-    <string name="status_bar_microphone">Микрофон</string>
-
-    <!-- Running service button -->
-    <string name="accessibility_quick_settings_running_services">Открыть запущенные сервисы</string>
-
-    <string name="task_helper_app_killed">%1$s принудительно остановлено</string>
-    <string name="empty_app_killed">Приложение</string>
-
-    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_dash_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Dash зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_dash_charging">Dash зарядка</string>
-
-    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_warp_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Warp зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_warp_charging">Warp зарядка</string>
-
-    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_vooc_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • VOOC зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_vooc_charging">VOOC зарядка</string>
-
-    <!-- Indication on the keyguard that is shown when the device is charging with a SuperDart charger. Should match keyguard_plugged_in_superdart_charging [CHAR LIMIT=40]-->
-    <string name="keyguard_indication_superdart_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • SuperDart зарядка (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
-    <string name="keyguard_plugged_in_superdart_charging">SuperDart зарядка</string>
-
-    <!-- AOD QS tile -->
-    <string name="quick_settings_aod_label">AOD</string>
-    <string name="quick_settings_aod_on_charge_label">AOD при зарядке</string>
-    <string name="quick_settings_aod_off_label">AOD выключен</string>
-    <string name="quick_settings_aod_off_powersave_label">AOD выключен\nЭнергосбережение</string>
-
-    <!-- DataSwitch Tile -->
-    <string name="qs_data_switch_label">Передача данных</string>
-    <string name="qs_data_switch_toast_0">В настоящее время SIM-карта не вставлена</string>
-    <string name="qs_data_switch_toast_1">В настоящее время вставлена ​​только одна SIM-карта</string>
-    <string name="qs_data_switch_changed_1">Передача данных через SIM 1</string>
-    <string name="qs_data_switch_changed_2">Передача данных через SIM 2</string>
-
-    <string name="screenrecord_stopdot_label">Показать стоп-точку</string>
-    <string name="screenrecord_stopdot_summary">Нажмите и удерживайте, чтобы переместить</string>
-    <string name="screenrecord_lowquality_label">Понизить качество</string>
-    <string name="screenrecord_lowquality_summary">Для меньшего размера файла</string>
-    <string name="screenrecord_longer_timeout_switch_label">Максимальный размер файла</string>
-    <string name="screenrecord_longer_timeout_switch_summary">Ограничить размер записи до 15 ГБ</string>
-
-    <!-- Volume panel QS tile -->
-    <string name="quick_settings_volume_panel_label">Панель громкости</string>
-
     <!-- VPN QS tile -->
     <string name="quick_settings_vpn_label">VPN</string>
-    <string name="quick_settings_vpn_connect_dialog_title">Подключено к\u2026</string>
-    <string name="vpn_credentials_hint">Пожалуйста, введите свои учетные данные для подключения к <xliff:g id="name">%s</xliff:g></string>
+    <string name="quick_settings_vpn_connect_dialog_title">Подключиться к\u2026</string>
+    <string name="vpn_credentials_hint">Пожалуйста, введите ваши учетные данные для подключения к <xliff:g id="name">%s</xliff:g></string>
     <string name="vpn_credentials_username">Имя пользователя</string>
     <string name="vpn_credentials_password">Пароль</string>
-    <string name="vpn_credentials_dialog_connect">Подключить</string>
+    <string name="vpn_credentials_dialog_connect">Подключение</string>
+
+    <!-- VPN tethering QS tile -->
+    <string name="vpn_tethering_label">VPN при раздаче</string>
+    <string name="vpn_tethering_changed_off">VPN при раздаче выкл.</string>
+    <string name="vpn_tethering_changed_on">VPN при раздаче вкл.</string>
+
+    <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
+    <string name="clock">Часы</string>
+
+    <!-- Advanced restart menu -->
+    <!-- Button to indicate more options -->
+    <string name="global_action_restart_more">Перезагрузка\u2026</string>
+    <!-- Button to restart the device, within the Restart Options dialog -->
+    <string name="global_action_restart_system">Система</string>
+    <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
+    <string name="global_action_restart_recovery">Рекавери</string>
+    <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+    <string name="global_action_restart_bootloader">Загрузчик</string>
+    <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+    <string name="global_action_restart_download">Download</string>
+    <!-- Button to restart the device into fastboot mode, within the Restart Options dialog -->
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+
+    <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_progress">Перезагрузка\u2026</string>
+    <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_recovery_progress">Перезагрузка в рекавери\u2026</string>
+    <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_bootloader_progress">Перезагрузка в загрузчик\u2026</string>
+    <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_download_progress">Перезагрузка в Download\u2026</string>
+    <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_fastboot_progress">Перезагрузка в Fastbootd\u2026</string>
+
+    <!-- Label for current user in power menu options dialog -->
+    <string name="global_action_current_user">Текущий</string>
+    <string name="global_action_users">Пользователи</string>
+    <string name="global_action_panic">Аварийное отключение</string>
+    <string name="global_action_restart_systemui">Пользовательский интерфейс</string>
+
+    <!-- Navigation bar dpad -->
+    <string name="accessibility_dpad_left">Курсор влево</string>
+    <string name="accessibility_dpad_right">Курсор вправо</string>
+
+    <!-- Label for area where tiles can be added to the qs panel -->
+    <string name="drag_or_tap_to_add_tiles">Удерживайте и перетаскивайте или нажмите для добавления плиток</string>
+
+    <!-- Face Unlock -->
+    <string name="face_unlock_recognizing">Распознование лица...</string>
+
+    <!-- Name of the nfc status bar icon. -->
+    <string name="status_bar_nfc">NFC</string>
+    <string name="status_bar_vpn">VPN</string>
+    <string name="status_bar_data_saver">Экономия трафика</string>
+
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">Удалить</string>
+
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">Удалить снимок экрана</string>
+
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Индикатор роуминга</string>
+
+    <!-- Name of the ims status bar icon. -->
+    <string name="status_bar_ims">VoLTE/VoWiFi</string>
 
     <!-- Poweroff/Reboot/Recovery QS tile -->
     <string name="quick_settings_poweroff_label">Выключить</string>
     <string name="quick_settings_reboot_label">Перезагрузить</string>
     <string name="quick_settings_reboot_recovery_label">Рекавери</string>
+    <string name="quick_settings_reboot_bootloader_label">Загрузчик</string>
 
-    <!-- Sound Search tile -->
-    <string name="quick_settings_sound_search">Поиск музыки</string>
-    <string name="quick_settings_sound_search_no_app">Извините, у вас отсутствует приложение для поиска музыки.</string>
+    <!-- DataSwitch Tile -->
+    <string name="qs_data_switch_label">Поменять SIM-карту для передачи данных</string>
+
+    <!-- Kill button in notification guts -->
+    <string name="force_stop_dlg_title">Остановить принудительно?</string>
+    <string name="force_stop_dlg_text">Если вы принудительно остановите приложение, он может неправильно работать.</string>
+
+    <!-- Screenshot Delete Toast -->
+    <string name="delete_screenshot_toast">Снимок экрана удален</string>
+
+    <!-- Advance location quick setting tile -->
+    <string name="quick_settings_secondary_location_off"></string>
+    <string name="accessibility_quick_settings_location_off">Отправка геоданных отключена.</string>
+    <string name="quick_settings_location_secondary_battery_saving">Энергосбережение</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Передача геоданных: режим энергосбережения.</string>
+    <string name="quick_settings_location_secondary_gps_only">Только GPS</string>
+    <string name="accessibility_quick_settings_location_gps_only">Передача геоданных: только датчики.</string>
+    <string name="quick_settings_location_secondary_high_accuracy">Высокая точность</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Передача геоданных: по всем источникам.</string>
+
+    <!-- Screen record -->
+    <string name="screenrecord_stopdot_label">Показывать кнопку стоп\nУдерживайте для перемещения</string>
+    <string name="screenrecord_lowquality_label">Меньшее качество для меньшего размера файла</string>
+    <string name="screenrecord_longer_timeout_switch_label">Больший размер файла\nОграничение размера записи до 15 Гб</string>
+    <string name="screenrecord_hevc_switch_label">Включить HEVC</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Dash зарядка • Осталось <xliff:g id="charging_time_left" example="4 часа и 2 минуты">%1$s</xliff:g></string>
+    <string name="keyguard_plugged_in_dash_charging"><xliff:g id="percentage">%s</xliff:g> • Dash зарядка</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_warp_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Warp зарядка • Осталось <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g></string>
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Warp зарядка</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • VOOC зарядка • Осталось <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g></string>
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC зарядка</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Turbo Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> until full)</string>
+    <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbo Charging</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with an oem fast power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Turbo зарядка • Осталось <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g></string>
+    <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbo зарядка</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a SuperDart charger. Should match keyguard_plugged_in_superdart_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_superdart_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • SuperDart зарядка(<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> до полной зарядки)</string>
+    <string name="keyguard_plugged_in_superdart_charging"><xliff:g id="percentage">%s</xliff:g> • SuperDart зарядка</string>
 
     <!-- Compass QS Tile -->
     <string name="quick_settings_compass_label">Компас</string>
     <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
     <string name="quick_settings_compass_init">Инициализация\u2026</string>
-    <string name="accessibility_quick_settings_compass_off">Компас выключен</string>
-    <string name="accessibility_quick_settings_compass_on">Компас вклбчен</string>
+    <string name="accessibility_quick_settings_compass_off">Компас выкл</string>
+    <string name="accessibility_quick_settings_compass_on">Компас вкл</string>
     <string name="accessibility_quick_settings_compass_changed_off">Компас выключен</string>
     <string name="accessibility_quick_settings_compass_changed_on">Компас включен</string>
     <string name="quick_settings_compass_N">С</string>
-    <string name="quick_settings_compass_NE">СВ</string>
+    <string name="quick_settings_compass_NE">С-В</string>
     <string name="quick_settings_compass_E">В</string>
-    <string name="quick_settings_compass_SE">ЮВ</string>
-    <string name="quick_settings_compass_S">Ю</string>
-    <string name="quick_settings_compass_SW">ЮЗ</string>
+    <string name="quick_settings_compass_SE">Ю-В</string>
+    <string name="quick_settings_compass_S">Юг</string>
+    <string name="quick_settings_compass_SW">Ю-З</string>
     <string name="quick_settings_compass_W">З</string>
-    <string name="quick_settings_compass_NW">СЗ</string>
+    <string name="quick_settings_compass_NW">С-З</string>
+
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Звук</string>
+    <string name="quick_settings_sound_ring">Звонок</string>
+    <string name="quick_settings_sound_vibrate">Вибрация</string>
+    <string name="quick_settings_sound_mute">Не беспокоить</string>
+
+    <!-- Refresh Rate Tile -->
+    <string name="refresh_rate_tile_label">Частота обновления</string>
+    <string name="auto_mode_label">Автоматическая</string>
+
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+     <string name="quick_settings_internet_hotspot_summary_num_devices">{count, plural,
+        =1 {# подключенное устройство}
+        other {# подключенных устройств}
+    }</string>
 
     <!-- DerpSpace Tile -->
-    <string name="quick_settings_derp_label">DerpSpace</string>
-    <string name="quick_settings_derp_description">Не трогай меня</string>
+    <string name="quick_derpspace_toast">ЛОЛ, вы действительно думали, что это длинное нажатие приведет вас куда-то!!!</string>
+
+    <!-- Preferred network tile -->
+    <string name="quick_settings_preferred_network_label">Предпочтительная сеть</string>
+    <string name="quick_settings_preferred_network_lte">4g / LTE</string>
+    <string name="quick_settings_preferred_network_nr">5g / NR</string>
+    <string name="quick_settings_preferred_network_unsupported">Неподдерживаемые</string>
+
+    <!-- Bluetooth dialog -->
+    <string name="bluetooth_is_off">Bluetooth отключен</string>
+    <string name="tap_a_device_to_connect">Нажмите на устройство для подключения</string>
+
+    <!-- Google Lens Screenshot string -->
+    <string name="lensss">Объектив</string>
+    <string name="lens_unavailable">Приложение Google Объектив не установлено</string>
+
+    <!-- QS customizer -->
+    <string name="reset_customizer">Сброс заказа</string>
 
     <!-- Language toggle tile -->
     <string name="quick_settings_locale_label">Язык</string>
-    <string name="quick_settings_locale_more_locales_toast">Пожалуйста, выберите по крайне мере два языка, что бы активировать</string>
+    <string name="quick_settings_locale_more_locales_toast">Пожалуйста, настройте несколько языков, чтобы активировать функцию</string>
 
+    <!-- Navbar -->
+    <string name="systemui_tuner_navbar_title">Макет</string>
+    <string name="navigation_bar_format_title">Формат панели навигации</string>
+    <string name="preview">Предварительный просмотр</string>
+    <string name="keycode">Код клавиши</string>
+    <string name="no_home_title">Не найдена кнопка Домой</string>
+    <string name="no_home_message">Для навигации по устройству требуется кнопка Home. Перед сохранением добавьте кнопку Домой.</string>
+    <string name="clipboard_description">Буфер обмена позволяет перетаскивать элементы непосредственно в буфер обмена. Элементы также могут быть перетаскивать непосредственно из буфера обмена, когда он присутствует.</string>
+    <string name="keycode_description">Кнопки клавиш позволяют добавлять клавиши клавиатуры на панель навигации. При нажатии они эмулируют выбранную клавишу клавиатуры. Сначала для кнопки должна быть выбрана клавиша, а затем изображение, которое будет отображаться на кнопке.</string>
+    <string name="start">Запуск</string>
+    <string name="center">Центр</string>
+    <string name="end">Конец</string>
+    <string name="space">Разделитель</string>
+    <string name="menu_ime">Меню / Переключение раскладки</string>
+    <string name="select_button">Выберите кнопку для добавления</string>
+    <string name="add_button">Добавить кнопку</string>
+    <string name="select_keycode">Выбрать клавишу клавиатуры</string>
+    <string name="left">Слева</string>
+    <string name="right">Справа</string>
+    <string name="navbar_editor_power">Питание</string>
+    <string name="navbar_editor_volup">Громкость вверх</string>
+    <string name="navbar_editor_voldown">Громкость вниз</string>
+    <string name="navbar_editor_title">Редактор</string>
+    <string name="navbar_editor_summary">Настроить панель навигации</string>
+    <!-- SysUI Tuner: Adjust button width dialog title [CHAR LIMIT=60] -->
+    <string name="adjust_button_width">Настройка ширины кнопки</string>
 </resources>
