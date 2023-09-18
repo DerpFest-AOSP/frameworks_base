@@ -183,6 +183,7 @@ public final class BatteryService extends SystemService {
     private boolean mVoocCharger;
     private boolean mHasVoocCharger;
     private boolean mLastVoocCharger;
+    private String mVoocChargerPath;
 
     private boolean mTurboPower;
     private boolean mHasTurboPower;
@@ -861,8 +862,9 @@ public final class BatteryService extends SystemService {
     }
 
     private boolean isVoocCharger() {
+        mOpWarpChargerPath = mContext.getResources().getString(com.android.internal.R.string.config_mVoocChargerStatusPaths);
         try {
-            FileReader file = new FileReader("/sys/class/power_supply/battery/voocchg_ing");
+            FileReader file = new FileReader(mVoocChargerPath);
             BufferedReader br = new BufferedReader(file);
             String state = br.readLine();
             br.close();

@@ -298,6 +298,9 @@
   <!-- Paths to OP warp charging status file -->
   <string name="config_opWarpChargerStatusPaths" translatable="false">/sys/class/power_supply/battery/fastchg_status</string>
 
+  <!-- Paths to realme's vooc charging status file -->
+  <string name="config_VoocChargerStatusPaths" translatable="false">/sys/class/power_supply/battery/voocchg_ing</string>
+
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">false</bool>
 
