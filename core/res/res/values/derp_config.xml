@@ -324,6 +324,9 @@
   <!-- Whether device has physical tri state switch -->
   <bool name="config_hasAlertSlider">false</bool>
 
+  <!-- Package that contains udfps animation customization or empty to disable -->
+  <string name="config_udfps_animation_customization_package">org.derpfest.overlay.customization.udfps.animations</string>
+
   <!-- Whether to cancel fingerprint operation if not idle -->
   <bool name="config_fpCancelIfNotIdle">false</bool>
 
