@@ -198,15 +198,11 @@ public class PixelPropsUtils {
 
                 dlog("Spoofing build for GMS");
                 // Alter build parameters to avoid hardware attestation enforcement
-                setBuildField("BRAND", "Asus");
-                setBuildField("PRODUCT", "WW_Phone");
-                setBuildField("MODEL", "ASUS_X00HD");
-                setBuildField("MANUFACTURER", "Asus");
-                setBuildField("DEVICE", "ASUS_X00HD_4");
-                setBuildField("FINGERPRINT", "asus/WW_Phone/ASUS_X00HD_4:7.1.1/NMF26F/14.2016.1801.372-20180119:user/release-keys");
-                setBuildField("ID", "NMF26F");
-                setBuildField("TYPE", "user");
-                setBuildField("TAGS", "release-keys");
+                setBuildField("PRODUCT", "bullhead");
+                setBuildField("MODEL", "Nexus 5X");
+                setBuildField("DEVICE", "bullhead");
+                setBuildField("FINGERPRINT", "google/bullhead/bullhead:8.0.0/OPR6.170623.013/4283548:user/release-keys");
+                setBuildField("ID", "OPR6.170623.013");
                 return true;
             }
         }
