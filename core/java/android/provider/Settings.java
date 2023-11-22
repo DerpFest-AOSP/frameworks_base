@@ -6508,6 +6508,11 @@ public final class Settings {
         public static final String STATUS_BAR_LOGO_STYLE = "status_bar_logo_style";
 
         /**
+         * @hide
+         */
+        public static final String QS_TRANSPARENCY = "qs_transparency";
+
+        /**
          * Whether to show power menu on LockScreen
          * @hide
          */

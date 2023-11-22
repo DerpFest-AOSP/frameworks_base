@@ -297,6 +297,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
 
     private static final String FORCE_SHOW_NAVBAR =
             "customsystem:" + Settings.System.FORCE_SHOW_NAVBAR;
+    private static final String QS_TRANSPARENCY =
+            "customsystem:" + Settings.System.QS_TRANSPARENCY;
     private static final String PULSE_ON_NEW_TRACKS =
             Settings.Secure.PULSE_ON_NEW_TRACKS;
 
@@ -987,6 +989,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
         }
 
         mTunerService.addTunable(this, FORCE_SHOW_NAVBAR);
+        mTunerService.addTunable(this, QS_TRANSPARENCY);
         mTunerService.addTunable(this, PULSE_ON_NEW_TRACKS);
 
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
@@ -3527,6 +3530,10 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
                         mNavigationBarController.onDisplayRemoved(mDisplayId);
                     }
                 }
+                break;
+            case QS_TRANSPARENCY:
+                mScrimController.setCustomScrimAlpha(
+                        TunerService.parseInteger(newValue, 85));
                 break;
             case PULSE_ON_NEW_TRACKS:
                 boolean pulseOnNewTracks =
