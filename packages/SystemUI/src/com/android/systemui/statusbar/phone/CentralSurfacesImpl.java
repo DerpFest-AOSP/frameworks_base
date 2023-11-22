@@ -313,6 +313,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
             "customsystem:" + Settings.System.FORCE_SHOW_NAVBAR;
     public static final String STATUS_BAR_BRIGHTNESS_CONTROL =
             "customsystem:" + Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL;
+    private static final String QS_TRANSPARENCY =
+            "customsystem:" + Settings.System.QS_TRANSPARENCY;
     private static final String PULSE_ON_NEW_TRACKS =
             Settings.Secure.PULSE_ON_NEW_TRACKS;
 
@@ -1067,6 +1069,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
 
         mTunerService.addTunable(this, FORCE_SHOW_NAVBAR);
         mTunerService.addTunable(this, STATUS_BAR_BRIGHTNESS_CONTROL);
+        mTunerService.addTunable(this, QS_TRANSPARENCY);
         mTunerService.addTunable(this, PULSE_ON_NEW_TRACKS);
 
         mDisplayManager = mContext.getSystemService(DisplayManager.class);
@@ -4096,6 +4099,10 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
                         TunerService.parseIntegerSwitch(newValue, false);
                 if (mPhoneStatusBarViewController != null)
                     mPhoneStatusBarViewController.setBrightnessControlEnabled(mBrightnessControl);
+                break;
+            case QS_TRANSPARENCY:
+                mScrimController.setCustomScrimAlpha(
+                        TunerService.parseInteger(newValue, 85));
                 break;
             case PULSE_ON_NEW_TRACKS:
                 boolean showPulseOnNewTracks =
