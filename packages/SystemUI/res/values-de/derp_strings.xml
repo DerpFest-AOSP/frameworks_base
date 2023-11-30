@@ -168,4 +168,7 @@
     <!-- Language toggle tile -->
     <string name="quick_settings_locale_label">Sprache</string>
     <string name="quick_settings_locale_more_locales_toast">Bitte mehr als eine Sprache einrichten</string>
+
+    <!-- Face Unlock -->
+    <string name="face_unlock_recognizing">Gesichtserkennung …</string>
 </resources>
