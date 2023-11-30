@@ -184,4 +184,7 @@
 
     <!-- DerpSpace Tile -->
     <string name="quick_derpspace_toast">LOL, you really thought that long click will take you somewhere!!!</string>
+
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Gesichtserkennung...</string>
 </resources>
