@@ -33,4 +33,7 @@
 
     <!-- Bluetooth dialog -->
     <dimen name="bluetooth_dialog_active_device_bottom_margin">4dp</dimen>
+
+    <!-- Height of the faceunlock image view -->
+    <dimen name="keyguard_face_unlock_margin_bottom">@dimen/keyguard_lock_height</dimen>
 </resources>
