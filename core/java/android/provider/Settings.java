@@ -19881,6 +19881,15 @@ public final class Settings {
         public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
 
         /**
+         * Whether airplane mode enhancement is enabled
+         * <p>
+         * Set to 1 for true and 0 for false.
+         *
+         * @hide
+         */
+        public static final String APM_ENHANCEMENT = "apm_enhancement_enabled";
+
+        /**
          * Settings migrated from Wear OS settings provider.
          * @hide
          */
