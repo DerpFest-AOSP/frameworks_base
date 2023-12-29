@@ -44,6 +44,9 @@
          before the screen has had chance to switch out of HBM mode -->
     <integer name="config_udfpsDimmingDisableDelay">0</integer>
 
+    <!-- The same as above, for enrollment in Settings -->
+    <integer name="config_udfpsEnrollingDimmingDisableDelay">0</integer>
+
     <!-- Udfps vendor code -->
     <integer name="config_udfps_vendor_code">0</integer>
 
