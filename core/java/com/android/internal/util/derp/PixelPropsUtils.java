@@ -181,12 +181,12 @@ public class PixelPropsUtils {
 
                 dlog("Spoofing build for GMS");
                 // Alter build parameters to avoid hardware attestation enforcement
-                setBuildField("BRAND", "GIONEE");
-                setBuildField("MANUFACTURER", "GIONEE");
-                setBuildField("PRODUCT", "S11S");
-                setBuildField("MODEL", "GIONEE S11S");
-                setBuildField("DEVICE", "GIONEE_SW17G12");
-                setBuildField("FINGERPRINT", "GIONEE/S11S/GIONEE_SW17G12:7.1.1/N6F26Q/1509594663:user/release-keys");
+                setBuildField("BRAND", "acer");
+                setBuildField("MANUFACTURER", "Acer Inc.");
+                setBuildField("PRODUCT", "c01_ww");
+                setBuildField("MODEL", "C01");
+                setBuildField("DEVICE", "acer_c01");
+                setBuildField("FINGERPRINT", "acer/c01_ww/acer_c01:7.1.1/NMF26F/1521514970:user/release-keys");
                 return true;
             }
         }
