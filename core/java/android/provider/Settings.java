@@ -6508,6 +6508,16 @@ public final class Settings {
         public static final String OMNI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS = "sysui_keyguard_show_battery_bar_always";
 
         /**
+         * @hide
+         */
+        public static final String OMNI_KEYGUARD_BATTERY_BAR_COLOR_SOURCE = "sysui_keyguard_battery_bar_color_source";
+
+        /**
+         * @hide
+         */
+        public static final String OMNI_KEYGUARD_BATTERY_BAR_CUSTOM_COLOR = "sysui_keyguard_battery_bar_custom_color";
+
+        /**
          * Whether StatusBar icons should use app icon
          * @hide
          */
@@ -7019,6 +7029,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(KEY_EDGE_LONG_SWIPE_ACTION);
             PRIVATE_SETTINGS.add(OMNI_KEYGUARD_SHOW_BATTERY_BAR);
             PRIVATE_SETTINGS.add(OMNI_KEYGUARD_SHOW_BATTERY_BAR_ALWAYS);
+            PRIVATE_SETTINGS.add(OMNI_KEYGUARD_BATTERY_BAR_COLOR_SOURCE);
+            PRIVATE_SETTINGS.add(OMNI_KEYGUARD_BATTERY_BAR_CUSTOM_COLOR);
             PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(SENSOR_BLOCK);
             PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);

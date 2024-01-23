@@ -11,4 +11,6 @@
     <color name="footer_actions_bg">@android:color/system_neutral1_50</color>
 
     <color name="qs_ripple_color">@android:color/system_accent1_400</color>
+
+    <color name="ambient_batterybar_color">@android:color/system_accent1_600</color>
 </resources>
