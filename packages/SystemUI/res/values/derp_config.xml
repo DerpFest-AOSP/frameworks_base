@@ -91,4 +91,7 @@
 
     <!-- Whether long press is required to activate keyguard quick affordance buttons -->
     <bool name="config_keyguardQuickAffordanceRequiresLongPress">true</bool>
+
+    <!-- Doze: should pulse on pick up? -->
+    <bool name="doze_pulse_on_pick_up">false</bool>
 </resources>
