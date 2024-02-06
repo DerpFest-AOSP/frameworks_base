@@ -13,7 +13,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- True if the notifications should tint the app name with the app icon or the accent color -->
-    <bool name="config_allowNotificationAppNameTinting">false</bool>
+    <bool name="config_allowNotificationAppNameTinting">true</bool>
 
     <!-- True if the notifications should tint the app icon with a custom color -->
     <bool name="config_useCustomAppIconTinting">false</bool>
