@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2023 DerpFest
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">查看电池状态</string>
+    <string name="header">电池状态</string>
+    <string name="display_dashboard_summary">查看详细的电池使用情况</string>
+</resources>
