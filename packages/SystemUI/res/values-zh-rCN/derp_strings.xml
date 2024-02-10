@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2023 DerpFest
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Status bar - icons -->
+    <string name="status_bar_icons_title">状态栏图标</string>
+
+    <!-- Custom QS tiles -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">低功耗息屏显示</string>
+    <string name="accessibility_quick_settings_ambient_display_off">低功耗息屏显示已关闭。</string>
+    <string name="accessibility_quick_settings_ambient_display_on">低功耗息屏显示已启用。</string>
+
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">息屏显示</string>
+    <string name="quick_settings_aod_on_charge_label">充电时显示</string>
+    <string name="quick_settings_aod_off_label">关闭息屏显示</string>
+
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">保持亮屏</string>
+    <string name="accessibility_quick_settings_caffeine_off">已关闭保持亮屏。</string>
+    <string name="accessibility_quick_settings_caffeine_on">已启用保持亮屏。</string>
+
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">指南针</string>
+    <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
+    <string name="quick_settings_compass_init">正在启动\u2026</string>
+    <string name="quick_settings_compass_N">N</string>
+    <string name="quick_settings_compass_NE">NE</string>
+    <string name="quick_settings_compass_E">E</string>
+    <string name="quick_settings_compass_SE">SE</string>
+    <string name="quick_settings_compass_S">S</string>
+    <string name="quick_settings_compass_SW">SW</string>
+    <string name="quick_settings_compass_W">W</string>
+    <string name="quick_settings_compass_NW">NW</string>
+
+    <!-- DataSwitch Tile -->
+    <string name="qs_data_switch_label">切换数据卡</string>
+    <string name="qs_data_switch_toast_0">当前未插入 SIM 卡</string>
+    <string name="qs_data_switch_toast_1">当前只插入了一张 SIM 卡</string>
+    <string name="qs_data_switch_text_1">SIM 1</string>
+    <string name="qs_data_switch_text_2">SIM 2</string>
+    <string name="qs_data_switch_changed_1">已将数据卡切换为 SIM 1。</string>
+    <string name="qs_data_switch_changed_2">已将数据卡切换为 SIM 2。</string>
+
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">弹出通知</string>
+    <string name="accessibility_quick_settings_heads_up_off">已禁用弹出通知。</string>
+    <string name="accessibility_quick_settings_heads_up_on">已启用弹出通知。</string>
+
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">电池共享</string>
+    <string name="quick_settings_powershare_enabled_label">已启用电池共享</string>
+
+    <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">阅读模式</string>
+    <string name="accessibility_quick_settings_reading_mode_on">已启用阅读模式。</string>
+    <string name="accessibility_quick_settings_reading_mode_off">已关闭阅读模式。</string>
+
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">声音</string>
+    <string name="quick_settings_sound_ring">响铃</string>
+    <string name="quick_settings_sound_vibrate">振动</string>
+    <string name="quick_settings_sound_silent">静音</string>
+
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">同步</string>
+    <string name="accessibility_quick_settings_sync_off">已禁用同步。</string>
+    <string name="accessibility_quick_settings_sync_on">已启用同步。</string>
+
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB 网络共享</string>
+
+    <!-- VPN QS tile -->
+    <string name="quick_settings_vpn_label">VPN</string>
+    <string name="quick_settings_vpn_connect_dialog_title">连接到\u2026</string>
+    <string name="vpn_credentials_hint">请输入您用于连接到 <xliff:g id="name">%s</xliff:g> 的凭据</string>
+    <string name="vpn_credentials_username">用户名</string>
+    <string name="vpn_credentials_password">密码</string>
+    <string name="vpn_credentials_dialog_connect">连接</string>
+
+    <!-- VPN tethering QS tile -->
+    <string name="vpn_tethering_label">VPN 网络共享</string>
+    <string name="vpn_tethering_changed_off">已关闭 VPN 网络共享。</string>
+    <string name="vpn_tethering_changed_on">已启用 VPN 网络共享。</string>
+
+    <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
+    <string name="clock">时钟</string>
+
+    <!-- Label for area where tiles can be added to the qs panel -->
+    <string name="drag_or_tap_to_add_tiles">按住并拖动或轻触以添加磁贴</string>
+    <!-- Label for the area where tiles can be dragged in to remove -->
+    <string name="drag_or_tap_to_remove_tiles">按住并拖动或轻触以移除磁贴</string>
+
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">删除</string>
+
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">删除屏幕截图</string>
+
+    <!-- Advanced restart menu -->
+    <!-- Button to indicate more options -->
+    <string name="global_action_restart_more">重新启动\u2026</string>
+    <!-- Button to restart the device, within the Restart Options dialog -->
+    <string name="global_action_restart_system">系统</string>
+    <!-- Button to restart the device into recovery mode, within the Restart Options dialog -->
+    <string name="global_action_restart_recovery">恢复模式</string>
+    <!-- Button to restart the device into bootloader mode, within the Restart Options dialog -->
+    <string name="global_action_restart_bootloader">引导加载程序</string>
+    <!-- Button to restart the device into download mode, within the Restart Options dialog -->
+    <string name="global_action_restart_download">下载模式</string>
+    <!-- Button to restart the device into fastboot mode, within the Restart Options dialog -->
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+
+    <!-- Restart progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_progress">正在重新启动\u2026</string>
+    <!-- Restart to recovery mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_recovery_progress">正在重新启动到恢复模式\u2026</string>
+    <!-- Restart to bootloader mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_bootloader_progress">正在重新启动到引导加载程序\u2026</string>
+    <!-- Restart to download mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_download_progress">正在重新启动到下载模式\u2026</string>
+    <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
+    <string name="global_action_restart_fastboot_progress">正在重新启动到 Fastbootd\u2026</string>
+
+    <!-- Label for current user in power menu options dialog -->
+    <string name="global_action_current_user">当前</string>
+    <string name="global_action_users">用户</string>
+    <string name="global_action_panic">触发崩溃</string>
+    <string name="global_action_restart_systemui">系统界面</string>
+
+    <!-- Navigation bar dpad -->
+    <string name="accessibility_dpad_left">光标向左</string>
+    <string name="accessibility_dpad_right">光标向右</string>
+
+    <!-- Name of the nfc status bar icon. -->
+    <string name="status_bar_nfc">NFC</string>
+
+    <!-- Name of the vpn status bar icon. -->
+   <string name="status_bar_vpn">VPN</string>
+
+    <!-- Data usage info in QS footer -->
+    <string name="usage_data">已于今日使用</string>
+    <string name="usage_data_default_suffix">移动数据</string>
+    <string name="usage_wifi_default_suffix">Wi-Fi</string>
+
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">漫游状态</string>
+
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">高清通话（VoLTE/VoNR）</string>
+
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">Wi-Fi 通话（VoWiFi）</string>
+
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+     <string name="quick_settings_internet_hotspot_summary_num_devices">{count, plural,
+        =1 {# 设备已连接}
+        other {# 设备已连接}
+    }</string>
+
+    <!-- Screen record delete action -->
+    <!-- Label for notification action to delete a screen recording file [CHAR LIMIT=35] -->
+    <string name="screenrecord_delete_label">删除</string>
+    <!-- A toast message shown after successfully deleting a screen recording [CHAR LIMIT=NONE] -->
+    <string name="screenrecord_delete_description">已删除屏幕录制</string>
+
+    <!-- Screen record -->
+    <string name="screenrecord_stopdot_label">显示停止按钮</string>
+    <string name="screenrecord_stopdot_summary">长按以移动</string>
+    <string name="screenrecord_lowquality_label">降低视频质量</string>
+    <string name="screenrecord_lowquality_summary">更小的文件大小</string>
+    <string name="screenrecord_longer_timeout_switch_label">提高文件大小限制</string>
+    <string name="screenrecord_longer_timeout_switch_summary">限制录制文件大小为 15 GB</string>
+    <string name="screenrecord_skip_time_label">跳过倒计时</string>
+    <string name="screenrecord_skip_time_summary">移除 3 秒的录制等待</string>
+    <string name="screenrecord_hevc_switch_label">HEVC 编码</string>
+    <string name="screenrecord_hevc_switch_summary">使用更高效的 HEVC 编码</string>
+
+    <!-- Bluetooth dialog -->
+    <string name="turn_on_bluetooth">启用蓝牙</string>
+    <string name="bluetooth_is_off">蓝牙已关闭</string>
+    <string name="tap_a_device_to_connect">轻触以连接到设备或断开连接</string>
+
+    <!-- Kill button in notification guts -->
+    <string name="force_stop_dlg_title">强行停止？</string>
+    <string name="force_stop_dlg_text">如果您强行停止某个应用，可能会导致其出现异常。</string>
+
+    <!-- Label for UI element which allows to use lens on screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_lens_label">智能镜头</string>
+
+    <!-- Bouncer user switcher -->
+    <string name="restarting_systemui_msg">由于设置更改，正在重启系统界面..</string>
+
+    <!-- Screenshot Tile -->
+    <string name="screenshot_long_press">长按 - 选择区域</string>
+
+    <!-- SoundSearch Tile -->
+    <string name="quick_settings_sound_search">闻曲知音</string>
+    <string name="quick_settings_sound_search_no_app">请先安装音乐搜索应用</string>
+
+    <!-- Language toggle tile -->
+    <string name="quick_settings_locale_label">语言</string>
+    <string name="quick_settings_locale_more_locales_toast">请先设置多语言</string>
+
+    <!-- DerpSpace Tile -->
+    <string name="quick_derpspace_label">DerpSpace</string>
+    <string name="quick_derpspace_toast">哈哈，你真的以为长按就能带你去什么地方！！！</string>
+
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">正在识别人脸...</string>
+
+    <!-- App kill -->
+    <string name="task_helper_app_killed">已强行停止 %1$s</string>
+    <string name="empty_app_killed">应用</string>
+
+    <!-- App picker -->
+    <string name="app_picker_dialog_title">选择一个应用</string>
+    <string name="active_edge_app_select_title">选择应用</string>
+    <string name="active_edge_activity_select_title">选择活动</string>
+</resources>

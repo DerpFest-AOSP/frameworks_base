@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2023 DerpFest
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Vendor mismatch fingerprint warning [CHAR LIMIT=NONE] -->
+    <string name="system_error_vendorprint">您的供应商分区镜像与系统不匹配。请为您的设备刷入供应商镜像 <xliff:g id="string">%s</xliff:g></string>
+
+    <!-- Long-press back kill application -->
+    <string name="app_killed_message">已杀死应用</string>
+
+    <!-- LiveDisplay strings -->
+    <string name="live_display_auto">自动</string>
+    <string name="live_display_auto_summary">日落和日出后自动调整屏幕色温</string>
+    <string name="live_display_off">关闭</string>
+    <string name="live_display_off_summary">禁用所有调整</string>
+    <string name="live_display_day">日间</string>
+    <string name="live_display_day_summary">仅使用日间设置</string>
+    <string name="live_display_night">夜间</string>
+    <string name="live_display_night_summary">仅使用夜间设置</string>
+    <string name="live_display_outdoor">户外（明亮阳光）</string>
+    <string name="live_display_outdoor_summary">仅使用室外设置</string>
+    <string name="live_display_hint">LiveDisplay 可以帮助减轻眼睛疲劳并帮助您在夜间睡眠。单击此处尝试一下！</string>
+
+    <string name="accessibility_quick_settings_live_display_off">LiveDisplay 已关闭。</string>
+    <string name="accessibility_quick_settings_live_display_auto">LiveDisplay：自动模式。</string>
+    <string name="accessibility_quick_settings_live_display_day">LiveDisplay：日间模式。</string>
+    <string name="accessibility_quick_settings_live_display_night">LiveDisplay：夜间模式。</string>
+    <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay：户外模式。</string>
+    <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay 已关闭。</string>
+    <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay 更改为自动模式。</string>
+    <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay 更改为日间模式。</string>
+    <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay 更改为夜间模式。</string>
+    <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay 已更改为户外模式。</string>
+    <!-- LiveDisplay manager permission -->
+    <string name="permlab_manageLiveDisplay">管理 LiveDisplay 设置</string>
+    <string name="permdesc_manageLiveDisplay">允许应用配置高级显示设置。</string>
+
+    <!-- Button that copies the url to the log of a crashed application -->
+    <string name="aerr_copy">复制崩溃日志 URL</string>
+    <string name="url_copy_success">URL 复制成功</string>
+    <string name="url_copy_failed">将日志上传到 Memochō 时发生错误</string>
+
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">充电控制</string>
+    <string name="charging_control_notification_title">充电控制</string>
+    <string name="charging_control_notification_cancel_once">取消</string>
+    <string name="charging_control_notification_content_limit">电池将会被充到 %1$d%%</string>
+    <string name="charging_control_notification_content_limit_reached">电池已被充到 %1$d%%</string>
+    <string name="charging_control_notification_content_target">电池将会在 %1$s 完全充满</string>
+    <string name="charging_control_notification_content_target_reached">电池已充满</string>
+
+    <!-- App lock -->
+    <string name="unlock_application">解锁 <xliff:g id="label" example="Telegram">%1$s</xliff:g></string>
+
+    <!-- Cycle through ringer modes -->
+    <string name="volume_dialog_ringer_guidance_normal">有来电和通知时将会响铃</string>
+
+    <!-- Title & summary of notification letting users know that battery saver is now on [CHAR_LIMIT=80] -->
+    <string name="battery_saver_on_notification_title">省电模式已开启</string>
+    <string name="battery_saver_on_notification_summary">按计划开启。点按以查看设置。</string>
+
+    <!-- Parallel space badge -->
+    <string name="parallel_space_badge_label">%1$s</string>
+</resources>
