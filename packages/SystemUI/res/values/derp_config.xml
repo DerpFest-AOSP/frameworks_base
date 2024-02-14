@@ -94,4 +94,7 @@
 
     <!-- Doze: should pulse on pick up? -->
     <bool name="doze_pulse_on_pick_up">false</bool>
+
+    <!-- Whether the mobile signal icon pipeline should ignore IWlan status -->
+    <bool name="config_mobileIconIgnoresIWlan">false</bool>
 </resources>
