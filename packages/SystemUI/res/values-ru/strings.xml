@@ -553,6 +553,7 @@
     <string name="qr_code_scanner_updating_secondary_label" msgid="8344598017007876352">"Обновление"</string>
     <string name="status_bar_work" msgid="5238641949837091056">"Рабочий профиль"</string>
     <string name="status_bar_airplane" msgid="4848702508684541009">"Режим полета"</string>
+    <string name="zen_alarm_warning_indef">Вы не услышите следующий сигнал будильника <xliff:g id="when" example="at 7:00 AM">%1$s</xliff:g> если не отключите его до этого</string>
     <string name="zen_alarm_warning" msgid="7844303238486849503">"Следующий будильник: <xliff:g id="WHEN">%1$s</xliff:g>. Звук отключен."</string>
     <string name="alarm_template" msgid="2234991538018805736">"<xliff:g id="WHEN">%1$s</xliff:g>"</string>
     <string name="alarm_template_far" msgid="3561752195856839456">"<xliff:g id="WHEN">%1$s</xliff:g>"</string>
