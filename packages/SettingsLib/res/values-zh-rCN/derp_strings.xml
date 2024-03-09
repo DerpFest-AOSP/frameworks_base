@@ -12,4 +12,15 @@
 
     <!-- Deep sleep info -->
     <string name="status_deep_sleep">（深度休眠： %1$d%2$s）</string>
+
+    <!-- ZenMode -->
+    <string name="interruption_level_none_with_warning">完全静音。此模式也会将屏幕阅读器静音。</string>
+    <string name="interruption_level_priority">仅限优先通知</string>
+    <string name="interruption_level_alarms">仅限闹钟</string>
+    <string name="interruption_level_none_twoline">完全
+静音</string>
+    <string name="interruption_level_priority_twoline">仅限
+优先通知</string>
+    <string name="interruption_level_alarms_twoline">仅限
+闹钟</string>
 </resources>
