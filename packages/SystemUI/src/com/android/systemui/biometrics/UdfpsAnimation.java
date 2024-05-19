@@ -16,10 +16,15 @@
 
 package com.android.systemui.biometrics;
 
+import static android.content.Intent.ACTION_USER_SWITCHED;
+
 import static com.android.systemui.doze.util.BurnInHelperKt.getBurnInOffset;
 import static com.android.systemui.doze.util.BurnInHelperKt.getBurnInProgressOffset;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -68,6 +73,38 @@ public class UdfpsAnimation extends ImageView {
 
     private Resources mApkResources;
 
+    private boolean mIsContentObserverRegistered = false;
+
+    private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if (Intent.ACTION_USER_SWITCHED.equals(action)) {
+                if (mIsContentObserverRegistered) {
+                    mContext.getContentResolver().unregisterContentObserver(mContentObserver);
+                    mIsContentObserverRegistered = false;
+                }
+                Uri udfpsAnimStyle = Settings.Secure.getUriFor(Settings.Secure.UDFPS_ANIM_STYLE);
+                mContext.getContentResolver().registerContentObserver(
+                        udfpsAnimStyle, false, mContentObserver, UserHandle.USER_CURRENT);
+                mContentObserver.onChange(true, udfpsAnimStyle);
+                mIsContentObserverRegistered = true;
+            }           
+        }
+    };
+
+    private ContentObserver mContentObserver = new ContentObserver(null) {
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            int value = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                    Settings.Secure.UDFPS_ANIM_STYLE, 0, UserHandle.USER_CURRENT);
+            int style = (value < 0 || value >= mStyleNames.length) ? 0 : value;
+            mContext.getMainExecutor().execute(() -> {
+                updateAnimationStyle(style);
+            });
+        }
+    };
+
     public UdfpsAnimation(Context context, WindowManager windowManager,
            FingerprintSensorPropertiesInternal props) {
         super(context);
@@ -112,21 +149,14 @@ public class UdfpsAnimation extends ImageView {
 
         setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
+        IntentFilter filter = new IntentFilter(ACTION_USER_SWITCHED);
+        mContext.registerReceiverAsUser(mIntentReceiver, UserHandle.ALL, filter, null, null);
+
         Uri udfpsAnimStyle = Settings.Secure.getUriFor(Settings.Secure.UDFPS_ANIM_STYLE);
-        ContentObserver contentObserver = new ContentObserver(null) {
-            @Override
-            public void onChange(boolean selfChange, Uri uri) {
-                int value = Settings.Secure.getIntForUser(mContext.getContentResolver(),
-                        Settings.Secure.UDFPS_ANIM_STYLE, 0, UserHandle.USER_CURRENT);
-                int style = (value < 0 || value >= mStyleNames.length) ? 0 : value;
-                mContext.getMainExecutor().execute(() -> {
-                    updateAnimationStyle(style);
-                });
-            }
-        };
         mContext.getContentResolver().registerContentObserver(
-                udfpsAnimStyle, false, contentObserver, UserHandle.USER_CURRENT);
-        contentObserver.onChange(true, udfpsAnimStyle);
+                udfpsAnimStyle, false, mContentObserver, UserHandle.USER_CURRENT);
+        mContentObserver.onChange(true, udfpsAnimStyle);
+        mIsContentObserverRegistered = true;
     }
 
     private void updateAnimationStyle(int styleIdx) {
