@@ -22,6 +22,9 @@ import static android.app.WindowConfiguration.WINDOWING_MODE_FREEFORM;
 import static android.app.WindowConfiguration.WINDOWING_MODE_FULLSCREEN;
 import static android.view.Display.DEFAULT_DISPLAY;
 import static android.view.WindowManager.LayoutParams.INVALID_WINDOW_TYPE;
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_INTERCEPT_GLOBAL_DRAG_AND_DROP;
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_IS_ROUNDED_CORNERS_OVERLAY;
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY;
 import static android.view.WindowManager.LayoutParams.TYPE_APPLICATION;
 import static android.view.WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
 import static android.view.WindowManager.LayoutParams.TYPE_BASE_APPLICATION;
@@ -192,6 +195,173 @@ public class WindowManagerServiceTests extends WindowTestsBase {
         doNothing().when(mWm.mAtmService.mTaskSupervisor).wakeUp(anyString());
         mWm.dismissKeyguard(null, "test-dismiss-keyguard");
         verify(mWm.mAtmService.mTaskSupervisor).wakeUp(anyString());
+    }
+
+
+    @Test
+    public void testRelayout_addTrustedOverlay_permissionDenied() {
+        testRelayoutFlagChanges(
+                false, /* firstRelayout */
+                0, /* startFlags */
+                0, /* startPrivateFlags */
+                0, /* newFlags */
+                PRIVATE_FLAG_TRUSTED_OVERLAY, /* newPrivateFlags */
+                0, /* expectedChangedFlags */
+                0, /* expectedChangedPrivateFlags */
+                0, /* expectedFlagsValue */
+                0, /* expectedPrivateFlagsValue */
+                false, /* internalSystemWindowGranted */
+                true /* manageActivityTasksGranted */);
+    }
+
+    @Test
+    public void testRelayout_addTrustedOverlay_permissionGranted() {
+        testRelayoutFlagChanges(
+                false, /* firstRelayout */
+                0, /* startFlags */
+                0, /* startPrivateFlags */
+                0, /* newFlags */
+                PRIVATE_FLAG_TRUSTED_OVERLAY, /* newPrivateFlags */
+                0, /* expectedChangedFlags */
+                PRIVATE_FLAG_TRUSTED_OVERLAY, /* expectedChangedPrivateFlags */
+                0, /* expectedFlagsValue */
+                PRIVATE_FLAG_TRUSTED_OVERLAY /* expectedPrivateFlagsValue */,
+                true, /* internalSystemWindowGranted */
+                true /* manageActivityTasksGranted */);
+    }
+
+    @Test
+    public void testRelayout_addRoundedCornersOverlay_permissionDenied() {
+        testRelayoutFlagChanges(
+                false, /* firstRelayout */
+                0, /* startFlags */
+                0, /* startPrivateFlags */
+                0, /* newFlags */
+                PRIVATE_FLAG_IS_ROUNDED_CORNERS_OVERLAY, /* newPrivateFlags */
+                0, /* expectedChangedFlags */
+                0, /* expectedChangedPrivateFlags */
+                0, /* expectedFlagsValue */
+                0, /* expectedPrivateFlagsValue */
+                false, /* internalSystemWindowGranted */
+                true /* manageActivityTasksGranted */);
+    }
+
+    @Test
+    public void testRelayout_addRoundedCornersOverlay_permissionGranted() {
+        testRelayoutFlagChanges(
+                false, /* firstRelayout */
+                0, /* startFlags */
+                0, /* startPrivateFlags */
+                0, /* newFlags */
+                PRIVATE_FLAG_IS_ROUNDED_CORNERS_OVERLAY, /* newPrivateFlags */
+                0, /* expectedChangedFlags */
+                PRIVATE_FLAG_IS_ROUNDED_CORNERS_OVERLAY, /* expectedChangedPrivateFlags */
+                0, /* expectedFlagsValue */
+                PRIVATE_FLAG_IS_ROUNDED_CORNERS_OVERLAY /* expectedPrivateFlagsValue */,
+                true, /* internalSystemWindowGranted */
+                true /* manageActivityTasksGranted */);
+    }
+
+    @Test
+    public void testRelayout_addInterceptGlobalDragAndDrop_permissionDenied() {
+        testRelayoutFlagChanges(
+                false, /* firstRelayout */
+                0, /* startFlags */
+                0, /* startPrivateFlags */
+                0, /* newFlags */
+                PRIVATE_FLAG_INTERCEPT_GLOBAL_DRAG_AND_DROP, /* newPrivateFlags */
+                0, /* expectedChangedFlags */
+                0, /* expectedChangedPrivateFlags */
+                0, /* expectedFlagsValue */
+                0, /* expectedPrivateFlagsValue */
+                true, /* internalSystemWindowGranted */
+                false /* manageActivityTasksGranted */);
+    }
+
+    @Test
+    public void testRelayout_addInterceptGlobalDragAndDrop_permissionGranted() {
+        testRelayoutFlagChanges(
+                false, /* firstRelayout */
+                0, /* startFlags */
+                0, /* startPrivateFlags */
+                0, /* newFlags */
+                PRIVATE_FLAG_INTERCEPT_GLOBAL_DRAG_AND_DROP, /* newPrivateFlags */
+                0, /* expectedChangedFlags */
+                PRIVATE_FLAG_INTERCEPT_GLOBAL_DRAG_AND_DROP, /* expectedChangedPrivateFlags */
+                0, /* expectedFlagsValue */
+                PRIVATE_FLAG_INTERCEPT_GLOBAL_DRAG_AND_DROP /* expectedPrivateFlagsValue */,
+                true, /* internalSystemWindowGranted */
+                true /* manageActivityTasksGranted */);
+    }
+
+
+    private void testRelayoutFlagChanges(boolean firstRelayout, int startFlags,
+            int startPrivateFlags, int newFlags, int newPrivateFlags, int expectedChangedFlags,
+            int expectedChangedPrivateFlags, int expectedFlagsValue,
+            int expectedPrivateFlagsValue) {
+            testRelayoutFlagChanges(firstRelayout, startFlags, startPrivateFlags, newFlags,
+                    newPrivateFlags, expectedChangedFlags, expectedChangedPrivateFlags,
+                    expectedFlagsValue, expectedPrivateFlagsValue,
+                    true /* internalSystemWindowGranted */,
+                    true /* manageActivityTasksGranted */);
+    }
+
+    // Helper method to test relayout of a window, either for the initial layout, or a subsequent
+    // one, and makes sure that the flags and private flags changes and final values are properly
+    // reported to mDwpcHelper.keepActivityOnWindowFlagsChanged.
+    private void testRelayoutFlagChanges(boolean firstRelayout, int startFlags,
+            int startPrivateFlags, int newFlags, int newPrivateFlags, int expectedChangedFlags,
+            int expectedChangedPrivateFlags, int expectedFlagsValue,
+            int expectedPrivateFlagsValue, boolean internalSystemWindowGranted,
+            boolean manageActivityTasksGranted) {
+        final WindowState win = newWindowBuilder("appWin", TYPE_BASE_APPLICATION).build();
+        win.mRelayoutCalled = !firstRelayout;
+        mWm.mWindowMap.put(win.mClient.asBinder(), win);
+        spyOn(mDisplayContent.mDwpcHelper);
+        when(mDisplayContent.mDwpcHelper.hasController()).thenReturn(true);
+
+        doReturn(internalSystemWindowGranted ? PackageManager.PERMISSION_GRANTED
+                : PackageManager.PERMISSION_DENIED).when(mWm.mContext).checkPermission(
+                eq(android.Manifest.permission.INTERNAL_SYSTEM_WINDOW), anyInt(), anyInt());
+        doReturn(manageActivityTasksGranted ? PackageManager.PERMISSION_GRANTED
+                : PackageManager.PERMISSION_DENIED).when(mWm.mContext).checkPermission(
+                eq(android.Manifest.permission.MANAGE_ACTIVITY_TASKS), anyInt(), anyInt());
+
+        win.mAttrs.flags = startFlags;
+        win.mAttrs.privateFlags = startPrivateFlags;
+
+        LayoutParams newParams = new LayoutParams();
+        newParams.copyFrom(win.mAttrs);
+        newParams.flags = newFlags;
+        newParams.privateFlags = newPrivateFlags;
+
+        int seq = 1;
+        if (!firstRelayout) {
+            win.mRelayoutSeq = 1;
+            seq = 2;
+        }
+        mWm.relayoutWindow(win.mSession, win.mClient, newParams, 100, 200, View.VISIBLE, 0, seq,
+                0, new WindowRelayoutResult(), new SurfaceControl());
+
+        ArgumentCaptor<Integer> changedFlags = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Integer> changedPrivateFlags = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Integer> flagsValue = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Integer> privateFlagsValue = ArgumentCaptor.forClass(Integer.class);
+
+        if (!firstRelayout && expectedChangedFlags == 0 && expectedChangedPrivateFlags == 0) {
+            verify(mDisplayContent.mDwpcHelper, never()).keepActivityOnWindowFlagsChanged(
+                    any(ActivityInfo.class), anyInt(), anyInt(), anyInt(), anyInt());
+            return;
+        }
+
+        verify(mDisplayContent.mDwpcHelper).keepActivityOnWindowFlagsChanged(
+                any(ActivityInfo.class), changedFlags.capture(), changedPrivateFlags.capture(),
+                flagsValue.capture(), privateFlagsValue.capture());
+
+        assertThat(changedFlags.getValue()).isEqualTo(expectedChangedFlags);
+        assertThat(changedPrivateFlags.getValue()).isEqualTo(expectedChangedPrivateFlags);
+        assertThat(flagsValue.getValue()).isEqualTo(expectedFlagsValue);
+        assertThat(privateFlagsValue.getValue()).isEqualTo(expectedPrivateFlagsValue);
     }
 
     @Test
