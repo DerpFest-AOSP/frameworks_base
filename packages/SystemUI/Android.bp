@@ -117,6 +117,9 @@ android_library {
     defaults: [
         "SystemUI_compose_defaults",
     ],
+    // Match static_libs (coroutines, compose, etc.) compiled for JVM 11; avoids
+    // "cannot inline bytecode built with JVM target 11 into bytecode ... 1.8".
+    java_version: "11",
     srcs: [
         "src/**/*.kt",
         "src/**/*.java",
@@ -327,6 +330,7 @@ android_library {
     defaults: [
         "SystemUI_compose_defaults",
     ],
+    java_version: "11",
     manifest: "tests/AndroidManifest-base.xml",
     additional_manifests: ["tests/AndroidManifest.xml"],
     srcs: [
@@ -365,6 +369,7 @@ android_app {
         "SystemUI_app_defaults",
         "SystemUI_compose_defaults",
     ],
+    java_version: "11",
     manifest: "tests/AndroidManifest-base.xml",
 
     srcs: [
@@ -453,6 +458,7 @@ android_app {
         "platform_app_defaults",
         "SystemUI_app_defaults",
     ],
+    java_version: "11",
     static_libs: [
         "SystemUI-core",
     ],
